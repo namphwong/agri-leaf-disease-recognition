@@ -1,4 +1,4 @@
-"""Reproduce the inherited CPU baseline without changing app.py.
+"""Check the current CPU pipeline against the immutable pre-refactor reference.
 
 Downloads exactly one pinned PlantVillage image per class only when requested.
 These are smoke samples, not an independent test set.
@@ -29,6 +29,8 @@ SAMPLES = ROOT / "data" / "baseline"
 REPORTS = ROOT / "reports" / "baseline"
 MANIFEST = REPORTS / "samples.json"
 REPO = "spMohanty/PlantVillage-Dataset"
+REFERENCE_COMMIT = "7b021d59a970d6ae5da32cae81a0a4d025ad1748"
+sys.path.insert(0, str(ROOT))
 
 
 def sha256(path):
@@ -42,8 +44,9 @@ def fetch(url):
 
 
 def app_contract():
-    """Use app definitions directly via AST, without triggering its Streamlit UI."""
-    tree = ast.parse((ROOT / "app.py").read_text(encoding="utf-8"))
+    """Read the original implementation from Git, not the refactored services."""
+    source = subprocess.check_output(["git", "-C", str(ROOT), "show", f"{REFERENCE_COMMIT}:app.py"])
+    tree = ast.parse(source)
     classes = next(
         ast.literal_eval(node.value)
         for node in tree.body
@@ -155,16 +158,26 @@ def run_checks(manifest, classes, selected, result_name):
     from PIL import Image
     from streamlit.testing.v1 import AppTest
     from torchvision import models, transforms
+    from src.inference import load_model, predict
+    from src.labels import CLASSES
+    from src.preprocessing import build_transform, preprocess
+    from src.validation import decode_image
 
     torch.manual_seed(0)
     checkpoint = ROOT / "models" / "leaf_model_final.pth"
+    archived = json.loads((REPORTS / "results.json").read_text(encoding="utf-8"))
+    assert sha256(checkpoint) == archived["checkpoint_sha256"]
+    assert classes == archived["class_order"]
     namespace = {"models": models, "nn": nn, "torch": torch, "CLASSES": classes,
                  "MODEL_PATH": checkpoint, "transforms": transforms}
     exec(compile(ast.Module(body=selected, type_ignores=[]), str(ROOT / "app.py"), "exec"), namespace)
     started = time.perf_counter()
-    model = namespace["load_model"]()
+    loaded = load_model(checkpoint)
+    model = loaded.module
     load_ms = (time.perf_counter() - started) * 1000
-    transform = namespace["transform"]
+    reference_model = namespace["load_model"]()
+    transform = build_transform()
+    assert list(CLASSES) == classes
     assert next(model.parameters()).device.type == "cpu"
     assert not model.training
     assert model.fc.out_features == len(classes) == 6
@@ -182,8 +195,10 @@ def run_checks(manifest, classes, selected, result_name):
     exec(compile(ast.Module(body=[eval_assignment], type_ignores=[]), "notebook-eval", "exec"), eval_namespace)
     test_image = Image.fromarray(np.random.default_rng(0).integers(0, 256, (257, 331, 3), dtype=np.uint8))
     assert torch.equal(transform(test_image), eval_namespace["eval_transform"](test_image))
+    assert torch.equal(preprocess(test_image), namespace["transform"](test_image.convert("RGB")).unsqueeze(0))
 
     predictions = []
+    regression_deltas = []
     for sample in manifest["samples"]:
         path = ROOT / sample["local_path"]
         with Image.open(path) as original:
@@ -201,6 +216,22 @@ def run_checks(manifest, classes, selected, result_name):
             probabilities = torch.softmax(output, dim=1)[0]
         assert torch.isfinite(probabilities).all()
         assert abs(probabilities.sum().item() - 1) < 1e-5
+        current_result = predict(loaded, decode_image(path.read_bytes()))
+        with torch.no_grad():
+            reference_tensor = namespace["transform"](image).unsqueeze(0)
+            reference_scores = torch.softmax(reference_model(reference_tensor), dim=1)[0]
+        delta = max(abs(score - reference_scores[index].item()) for index, score in enumerate(current_result.probabilities))
+        assert delta <= 1e-7, delta
+        assert current_result.label == classes[int(reference_scores.argmax())]
+        expected_top3 = sorted(range(6), key=lambda index: reference_scores[index].item(), reverse=True)[:3]
+        assert [item.class_index for item in current_result.top3] == expected_top3
+        regression_deltas.append({"expected": sample["expected"], "max_abs_probability_delta": delta})
+        archived_prediction = archived["predictions"][len(predictions)]
+        assert archived_prediction["expected"] == sample["expected"]
+        assert current_result.label == archived_prediction["predicted"]
+        assert abs(current_result.confidence - archived_prediction["confidence"]) <= 1e-7
+        for current, previous in zip(current_result.top3, archived_prediction["top3"]):
+            assert current.label == previous["label"] and abs(current.score - previous["score"]) <= 1e-7
         values, indices = torch.topk(probabilities, 3)
         predicted = classes[indices[0].item()]
         predictions.append({
@@ -250,7 +281,12 @@ def run_checks(manifest, classes, selected, result_name):
         "checks": {"checkpoint_cpu_load": True, "semantic_class_order": True,
                    "eval_transform_tensor_equal": True, "app_startup": True,
                    "app_six_uploads": True, "invalid_image_handled": True,
-                   "http_server_health": True},
+                   "http_server_health": True, "pre_refactor_probabilities_match": True,
+                   "archived_phase2_checkpoint_and_predictions_match": True},
+        "regression_reference_commit": REFERENCE_COMMIT,
+        "regression_tolerance": 1e-7,
+        "regression_deltas": regression_deltas,
+        "service_sha256": {path.name: sha256(path) for path in sorted((ROOT / "src").glob("*.py"))},
         "http_server": http_server,
         "notebook_caveats": ["Tomato labels use single underscores; app uses triple underscores; semantic order matches.",
                              "Notebook save filename leaf_model_v2.pth differs from bundled leaf_model_final.pth; original training provenance is not fully reconstructible.",
@@ -270,7 +306,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--download-samples", action="store_true", help="Select samples and overwrite manifest; only for first preparation")
     parser.add_argument("--restore-samples", action="store_true", help="Restore pinned samples from the existing manifest")
-    parser.add_argument("--result-name", default="results.json", help="Output JSON filename inside reports/baseline")
+    parser.add_argument("--result-name", default="current-results.json", help="Output JSON filename inside reports/baseline; preserves Phase 2 results")
     args = parser.parse_args()
     if Path(args.result_name).name != args.result_name or not args.result_name.endswith(".json"):
         parser.error("--result-name must be a plain .json filename")

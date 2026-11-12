@@ -87,9 +87,9 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m streamlit run app.py --server.address=127.0.0.1 --browser.gatherUsageStats=false
 ```
 
-Mở http://localhost:8501. Script khôi phục đúng ảnh theo manifest và kiểm tra checksum; không chọn ảnh mới. Ảnh cần internet cho lần tải đầu, suy luận sau đó dùng CPU cục bộ. Lệnh chạy lại ghi đè `reports/baseline/results.json`; dùng `--result-name local-results.json` nếu muốn giữ kết quả ban đầu.
+Mở http://localhost:8501. Script khôi phục đúng ảnh theo manifest và kiểm tra checksum; không chọn ảnh mới. Ảnh cần internet cho lần tải đầu, suy luận sau đó dùng CPU cục bộ. Từ Phase 4, mặc định script ghi `reports/baseline/current-results.json` để giữ kết quả lịch sử; dùng `--result-name local-results.json` để chọn file riêng.
 
-Script kiểm chứng lấy hàm load model và transform trực tiếp từ AST của app để không tự viết lại pipeline. AppTest vẫn chạy toàn bộ `app.py`. Script dừng với exit code khác 0 nếu một assertion không đạt.
+Ở Phase 2, script lấy load model/transform trực tiếp từ AST của app. Từ Phase 4, script chạy module hiện tại và đối chiếu với AST của phiên bản Git trước refactor cùng kết quả Phase 2 đã lưu; xem [kiến trúc](architecture.md). AppTest vẫn chạy toàn bộ `app.py`; một assertion không đạt sẽ dừng script với exit code khác 0.
 
 `--download-samples` chỉ dùng khi chủ động lập manifest mới; không cần dùng khi tái lập baseline. Không commit dataset, ảnh tải về hoặc môi trường ảo.
 

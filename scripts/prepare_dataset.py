@@ -4,13 +4,13 @@ Raw images stay under ignored data/. Committed reports contain metadata only.
 """
 
 import argparse
-import ast
 import csv
 import hashlib
 import io
 import json
 import random
 import subprocess
+import sys
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
@@ -25,16 +25,16 @@ REPORTS = ROOT / "reports" / "dataset"
 REPOSITORY = "https://github.com/spMohanty/PlantVillage-Dataset.git"
 REVISION = "7f7ecc7e1eaca78107e3affe7cb5abd9427e139a"
 SEED = 42
+sys.path.insert(0, str(ROOT))
 
 
 def git(*args):
     return subprocess.check_output(["git", "-C", str(SOURCE), *args], text=True, encoding="utf-8").strip()
 
 
-def classes_from_app():
-    tree = ast.parse((ROOT / "app.py").read_text(encoding="utf-8"))
-    return next(ast.literal_eval(node.value) for node in tree.body if isinstance(node, ast.Assign)
-                and any(isinstance(t, ast.Name) and t.id == "CLASSES" for t in node.targets))
+def class_order():
+    from src.labels import CLASSES
+    return list(CLASSES)
 
 
 def download(classes):
@@ -304,7 +304,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--download", action="store_true", help="Fetch pinned sparse source checkout (requires Git and internet)")
     args = parser.parse_args()
-    classes = classes_from_app()
+    classes = class_order()
     if args.download:
         download(classes)
     audit(classes)

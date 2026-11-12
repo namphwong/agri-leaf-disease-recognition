@@ -1,32 +1,9 @@
-from pathlib import Path
-
 import streamlit as st
-import torch
-import torch.nn as nn
-from torchvision import transforms, models
-from PIL import Image
 
-# Must match the exact training class order
-CLASSES = [
-    "Potato___Early_blight",
-    "Potato___Late_blight",
-    "Potato___healthy",
-    "Tomato___Early_blight",
-    "Tomato___Late_blight",
-    "Tomato___healthy",
-]
-
-DISEASE_INFO = {
-    "Potato___Early_blight": "A fungal disease that causes dark brown spots on potato leaves and can reduce crop yield.",
-    "Potato___Late_blight": "A severe disease that spreads quickly in wet conditions and is responsible for major potato crop losses.",
-    "Potato___healthy": "The potato leaf appears healthy with no visible disease symptoms.",
-    "Tomato___Early_blight": "A fungal disease that causes brown spots and yellowing on tomato leaves.",
-    "Tomato___Late_blight": "A fast-spreading disease that affects tomato plants, especially in humid conditions.",
-    "Tomato___healthy": "The tomato leaf appears healthy with no visible disease symptoms.",
-}
-
-APP_DIR = Path(__file__).parent
-MODEL_PATH = APP_DIR / "models" / "leaf_model_final.pth"
+from src.config import DEFAULT_MODEL_PATH
+from src.inference import load_model, predict
+from src.labels import CLASSES, DISEASE_INFO, pretty_label
+from src.validation import decode_image
 
 st.set_page_config(page_title="Smart Leaf AI", page_icon="🌿", layout="wide")
 
@@ -69,29 +46,16 @@ st.markdown(
 
 
 @st.cache_resource
-def load_model() -> nn.Module:
-    model = models.resnet18(weights=None)
-    model.fc = nn.Linear(model.fc.in_features, len(CLASSES))
-    state_dict = torch.load(MODEL_PATH, map_location=torch.device("cpu"))
-    model.load_state_dict(state_dict)
-    model.eval()
-    return model
-
-
-transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-])
-
-
-def pretty_label(label: str) -> str:
-    return label.replace("___", " - ").replace("_", " ")
+def cached_model(path: str, modified_ns: int, size: int):
+    # File identity participates in Streamlit's cache key.
+    return load_model(path)
 
 
 try:
-    model = load_model()
+    model_stat = DEFAULT_MODEL_PATH.stat()
+    model = cached_model(str(DEFAULT_MODEL_PATH), model_stat.st_mtime_ns, model_stat.st_size)
 except FileNotFoundError:
-    st.error(f"Model file not found: {MODEL_PATH}")
+    st.error(f"Model file not found: {DEFAULT_MODEL_PATH}")
     st.stop()
 except Exception as exc:
     st.error(f"Failed to load model: {exc}")
@@ -106,6 +70,7 @@ with left_col, st.container(border=True):
         "Supported formats: JPG, JPEG, PNG",
         type=["jpg", "jpeg", "png"],
         label_visibility="collapsed",
+        help="JPEG/PNG, up to 20 MiB and 16 million pixels.",
     )
     st.markdown(
         "<p class='small-muted'>Tip: use a close-up image with good lighting and a visible leaf surface.</p>",
@@ -122,17 +87,13 @@ if uploaded_file is None:
     st.info("Upload a potato or tomato leaf image to see a prediction.")
 else:
     try:
-        image = Image.open(uploaded_file).convert("RGB")
-        input_tensor = transform(image).unsqueeze(0)
+        image = decode_image(uploaded_file.getvalue())
 
         with st.spinner("Analyzing leaf image with AI..."):
-            with torch.no_grad():
-                output = model(input_tensor)
-                probabilities = torch.softmax(output, dim=1)
-                predicted_class = torch.argmax(probabilities, dim=1).item()
-                confidence = probabilities[0][predicted_class].item() * 100
+            result = predict(model, image)
 
-        pred_label = CLASSES[predicted_class]
+        pred_label = result.label
+        confidence = result.confidence * 100
 
         preview_col, result_col = st.columns([1.05, 1], gap="large")
 
@@ -147,15 +108,9 @@ else:
             st.progress(min(max(int(confidence), 0), 100))
 
             st.write("### Top Predictions")
-            top3 = sorted(
-                list(enumerate(probabilities[0])),
-                key=lambda x: x[1],
-                reverse=True
-            )[:3]
-
-            for idx, prob in top3:
-                pct = prob.item() * 100
-                st.write(f"**{pretty_label(CLASSES[idx])} — {pct:.2f}%**")
+            for prediction in result.top3:
+                pct = prediction.score * 100
+                st.write(f"**{pretty_label(prediction.label)} — {pct:.2f}%**")
                 st.progress(min(max(int(pct), 0), 100))
 
             st.write("### Disease Description")

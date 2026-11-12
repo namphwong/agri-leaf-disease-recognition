@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+### Added — Phase 4, 2026-11-12
+
+- Module config, labels, validation, preprocessing, inference và storage record contract.
+- PredictionResult có nhãn/index, sáu điểm, top 3, checksum và model version.
+- Validation nội dung JPEG/PNG, giới hạn 20 MiB/16 triệu pixel; record lịch sử chưa thực hiện I/O.
+- Chín unit test pipeline và báo cáo regression với mã trước refactor cùng baseline Phase 2.
+
+### Changed — Phase 4, 2026-11-12
+
+- Streamlit gọi dịch vụ, cache theo đường dẫn/mtime/dung lượng, giữ bố cục cũ.
+- Công cụ dataset lấy nhãn từ module; baseline script giữ kết quả lịch sử, đối chiếu tham chiếu Git bất biến.
+- Không đổi checkpoint, notebook, manifest/split dữ liệu hoặc dependencies. SQLite và UI/UX mới vẫn thuộc Phase 5.
+
 ### Added — Phase 3, 2026-11-12
 
 - Script tải snapshot sáu lớp PlantVillage và audit 6.652 ảnh, checksum Git blob/pixel, metadata nhóm lá và bản trùng.
