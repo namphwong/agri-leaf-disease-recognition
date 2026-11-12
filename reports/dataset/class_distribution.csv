@@ -1,0 +1,7 @@
+label,images,leaf_ids,components,unresolved,quarantine,deduplicated_exclusions,train,validation,test
+Potato___Early_blight,1000,250,250,0,0,0,700,148,152
+Potato___Late_blight,1000,250,250,0,0,0,700,148,152
+Potato___healthy,152,38,38,0,0,0,104,20,28
+Tomato___Early_blight,1000,250,251,1,1,0,699,148,152
+Tomato___Late_blight,1909,230,1211,989,989,0,644,136,140
+Tomato___healthy,1591,250,836,592,592,0,699,148,152

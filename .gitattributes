@@ -1,0 +1,3 @@
+# Keep generated metadata byte-stable so manifest SHA-256 survives checkout.
+reports/dataset/*.csv text eol=lf
+reports/dataset/*.json text eol=lf

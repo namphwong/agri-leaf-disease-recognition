@@ -5,7 +5,7 @@
 - Học phần: Nhận dạng mẫu.
 - Tên đề tài: Xây dựng ứng dụng nhận dạng bệnh trên lá khoai tây và cà chua sử dụng ResNet18.
 - Repository: https://github.com/namphwong/agri-leaf-disease-recognition
-- Trạng thái: Phase 0–1 đã hoàn thành, Phase 2 đã kiểm chứng baseline CPU; yêu cầu riêng của giảng viên chờ xác nhận.
+- Trạng thái: Phase 0–2 đã hoàn thành, Phase 3 đã audit dữ liệu và thiết kế split; yêu cầu riêng của giảng viên chờ xác nhận.
 
 ## 1. Mục tiêu và người dùng
 
@@ -58,7 +58,7 @@ Mở rộng khi bản bắt buộc ổn định: Grad-CAM, batch, camera, triể
 
 ## 6. Dữ liệu và đánh giá
 
-Nguồn: PlantVillage, chỉ chọn sáu lớp trong `raw/color`. Chưa tải dataset tại Phase 0–1. Ghi ngày tải, phiên bản, số ảnh, ảnh lỗi và mất cân bằng ở Phase 3.
+Nguồn: PlantVillage, chỉ chọn sáu lớp trong `raw/color`. Phase 3 đã tải và audit đủ 6.652 ảnh; 1.582 ảnh thiếu mapping nhóm lá được cách ly, 5.070 ảnh còn lại tạo split có seed theo nhóm. Nguồn/phiên bản, checksum, ảnh lỗi, trùng và mất cân bằng xem `docs/dataset.md` và `reports/dataset/`. Đây không phải bước huấn luyện hoặc đo test accuracy.
 
 Checkpoint kế thừa có thể đã học trên ảnh được chọn để kiểm chứng. Nếu không truy được danh sách train/test gốc, không gọi lần chạy đó là test độc lập. Nếu cần thực nghiệm độc lập, huấn luyện lại với split theo lá vật lý (`leaf_id`), tách validation/test và cố định seed. Đổi split không khiến checkpoint có sẵn trở thành mô hình chưa từng thấy test.
 

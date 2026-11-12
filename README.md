@@ -6,7 +6,7 @@ Fork từ [Smart Leaf AI của spneoarm](https://github.com/spneoarm/smart-leaf-
 
 ## Trạng thái
 
-Phase 0–1 đã hoàn thành. **Phase 2 đã chạy baseline trên CPU**: mô hình tải được, sáu ảnh mẫu khớp nhãn, luồng Streamlit qua kiểm tra tự động. Ứng dụng, notebook và checkpoint vẫn là bản kế thừa; chưa thay UI/UX. Các yêu cầu cụ thể của giảng viên về huấn luyện/so sánh thuật toán chờ xác nhận. Chi tiết và giới hạn trong [baseline](docs/baseline.md).
+Phase 0–2 đã hoàn thành. **Phase 3 đã chuẩn bị và audit 6.652 ảnh**, tạo manifest cùng split theo nhóm lá; xem [dữ liệu và thiết kế đánh giá](docs/dataset.md). Mô hình đã chạy baseline CPU, sáu ảnh mẫu khớp nhãn; [chi tiết baseline](docs/baseline.md). Ứng dụng, notebook và checkpoint vẫn là bản kế thừa; chưa thay UI/UX hoặc huấn luyện lại. Yêu cầu riêng của giảng viên về huấn luyện/so sánh thuật toán chờ xác nhận.
 
 ## Phạm vi
 
@@ -50,13 +50,23 @@ Chạy lại kiểm chứng bằng sáu ảnh đã ghim nguồn và checksum:
 - Baseline tự chạy: **6/6 ảnh mẫu khớp nhãn**, median CPU forward **27,06 ms/ảnh**; đây là smoke check, không phải accuracy test độc lập. [Kết quả thô](reports/baseline/results.json).
 - Không coi tập ảnh lấy từ PlantVillage là test độc lập của checkpoint kế thừa khi chưa xác định giao nhau với tập huấn luyện.
 
-Phase 2 chỉ tải sáu ảnh kiểm chứng vào `data/baseline/` bị ignore. Chưa tải toàn dataset; chuẩn bị và thống kê dữ liệu thuộc Phase 3. Quy trình dữ liệu và đánh giá nằm trong [phạm vi dự án](docs/project-scope.md).
+Phase 3 đã tải đủ 6.652 ảnh của sáu lớp vào `data/plantvillage-source/`, khoảng 110,31 MiB ảnh. Không có ảnh lỗi giải mã; có 14 cặp trùng chính xác. 1.582 ảnh thiếu mapping nhóm lá được giữ riêng; 5.070 ảnh đủ điều kiện được chia train/validation/test = **3.546/748/776**, seed 42, theo nhóm lá và các liên kết ảnh trùng. Đây là split dành cho huấn luyện lại, không tạo ra test độc lập cho checkpoint kế thừa.
+
+Khôi phục dữ liệu và chạy audit (cần Git, internet và môi trường đã cài):
+
+```powershell
+.\.venv\Scripts\python.exe scripts/prepare_dataset.py --download
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
+
+Ảnh và Git cache nguồn được ignore; [manifest và thống kê](reports/dataset/summary.json) được commit để đối chiếu/tái lập. Không huấn luyện trực tiếp từ toàn thư mục ảnh mà bỏ qua cờ cách ly trong manifest. Xem [phạm vi dự án](docs/project-scope.md).
 
 ## Tài liệu và quản lý công việc
 
 - [Phạm vi và tiêu chí nghiệm thu](docs/project-scope.md).
 - [Roadmap Phase 0–8](docs/roadmap.md).
 - [Baseline CPU và cách tái lập](docs/baseline.md).
+- [Dữ liệu, thống kê và quy tắc đánh giá](docs/dataset.md).
 - [Quy trình đóng góp](CONTRIBUTING.md).
 - [Changelog](CHANGELOG.md).
 - [GitHub Issues](https://github.com/namphwong/agri-leaf-disease-recognition/issues).
@@ -70,7 +80,10 @@ models/                    # Checkpoint gốc
 notebooks/                 # Notebook huấn luyện gốc
 docs/                      # Phạm vi, roadmap, tài liệu nguồn
 scripts/baseline_check.py   # Kiểm chứng CPU và app kế thừa
+scripts/prepare_dataset.py # Tải sáu lớp, audit và split theo nhóm
 reports/baseline/          # Manifest và kết quả kiểm chứng
+reports/dataset/           # Metadata ảnh, thống kê, split và nhãn
+tests/                     # Kiểm tra rò rỉ dữ liệu và cách ly
 .github/                   # Mẫu PR
 requirements.txt           # Dependencies trực tiếp đã ghim
 requirements-lock.txt      # Toàn bộ runtime Windows/Python 3.11

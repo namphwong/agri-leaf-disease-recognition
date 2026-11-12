@@ -1,0 +1,38 @@
+[
+  {
+    "index": 0,
+    "label": "Potato___Early_blight",
+    "crop": "Potato",
+    "condition": "Early_blight"
+  },
+  {
+    "index": 1,
+    "label": "Potato___Late_blight",
+    "crop": "Potato",
+    "condition": "Late_blight"
+  },
+  {
+    "index": 2,
+    "label": "Potato___healthy",
+    "crop": "Potato",
+    "condition": "healthy"
+  },
+  {
+    "index": 3,
+    "label": "Tomato___Early_blight",
+    "crop": "Tomato",
+    "condition": "Early_blight"
+  },
+  {
+    "index": 4,
+    "label": "Tomato___Late_blight",
+    "crop": "Tomato",
+    "condition": "Late_blight"
+  },
+  {
+    "index": 5,
+    "label": "Tomato___healthy",
+    "crop": "Tomato",
+    "condition": "healthy"
+  }
+]
