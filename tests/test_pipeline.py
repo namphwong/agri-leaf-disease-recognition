@@ -46,7 +46,7 @@ class UploadTests(unittest.TestCase):
                     decode_image(payload)
 
     def test_unsupported_content_is_rejected(self):
-        with self.assertRaisesRegex(ImageValidationError, "JPEG and PNG"):
+        with self.assertRaisesRegex(ImageValidationError, "JPEG và PNG"):
             decode_image(image_bytes(format="GIF"))
 
     def test_byte_and_pixel_limits_are_enforced(self):
@@ -54,7 +54,7 @@ class UploadTests(unittest.TestCase):
             with self.assertRaisesRegex(ImageValidationError, "20 MiB"):
                 decode_image(b"1234")
         with patch("src.validation.MAX_IMAGE_PIXELS", 4):
-            with self.assertRaisesRegex(ImageValidationError, "16 million"):
+            with self.assertRaisesRegex(ImageValidationError, "16 triệu"):
                 decode_image(image_bytes(size=(3, 2)))
 
 

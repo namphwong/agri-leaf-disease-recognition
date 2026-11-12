@@ -1,5 +1,7 @@
 # Kiến trúc sau Phase 4
 
+Tài liệu này ghi snapshot Phase 4. Từ Phase 5, presentation chuyển vào `src/ui/` và storage có SQLite; xem [UI/UX](ui-ux.md) và [lịch sử](history.md) cho trạng thái hiện tại. Các số liệu hồi quy bên dưới vẫn là bằng chứng lịch sử Phase 4.
+
 Ngày kiểm chứng: 12/11/2026. Mục tiêu: tách pipeline khỏi Streamlit, giữ kết quả trên ảnh hợp lệ. Không thay checkpoint hoặc dependencies, không huấn luyện lại.
 
 ## Phân chia trách nhiệm

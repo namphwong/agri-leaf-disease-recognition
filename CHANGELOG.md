@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### Added — Phase 5, 2026-11-12
+
+- Giao diện Agri Leaf tiếng Việt: nhận dạng, lịch sử, đánh giá và hướng dẫn; theme sáng, bố cục responsive.
+- Ảnh mẫu từ train có fallback tải snapshot/checksum, xem trước và lưu kết quả chủ động.
+- SQLite schema 1, thumbnail, chống lưu trùng, tìm Unicode/lọc ngày/cây/nhãn, phân trang, xóa có xác nhận, CSV UTF-8 BOM theo toàn bộ bộ lọc.
+- Biến đường dẫn history tùy chọn, `.env.example`, tài liệu và screenshot laptop/màn hình hẹp.
+- Bộ test tổng 32 case và regression Phase 5 khớp baseline; QA browser lưu/xem/tải CSV.
+
+### Changed — Phase 5, 2026-11-12
+
+- Validation hiển thị lỗi tiếng Việt; app chỉ tải model khi phân tích, đổi ảnh xóa kết quả cũ.
+- Công cụ baseline thao tác nút phân tích và nhãn tiếng Việt; giữ nguyên dữ liệu lịch sử.
+- Không đổi model/preprocessing, checkpoint, notebook, dataset split hoặc dependencies. Trang đánh giá chưa có metrics độc lập đầy đủ; Phase 6 sẽ thực nghiệm.
+
 ### Added — Phase 4, 2026-11-12
 
 - Module config, labels, validation, preprocessing, inference và storage record contract.

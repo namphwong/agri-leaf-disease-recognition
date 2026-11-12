@@ -6,13 +6,17 @@ Fork từ [Smart Leaf AI của spneoarm](https://github.com/spneoarm/smart-leaf-
 
 ## Trạng thái
 
-Phase 0–3 đã hoàn thành. **Phase 4 đã tách pipeline khỏi giao diện**, chuẩn hóa kết quả và kiểm chứng hồi quy với mã gốc; xem [kiến trúc](docs/architecture.md). Dataset có 6.652 ảnh với manifest/split theo nhóm lá; xem [dữ liệu](docs/dataset.md). Checkpoint và notebook giữ nguyên; chưa làm lại UI/UX hoặc huấn luyện lại. Yêu cầu riêng của giảng viên về huấn luyện/so sánh thuật toán chờ xác nhận.
+Phase 0–4 đã hoàn thành. **Phase 5 đã có giao diện Agri Leaf tiếng Việt, lịch sử SQLite và xuất CSV**, cùng trang Đánh giá/Hướng dẫn; xem [UI/UX và nghiệm thu](docs/ui-ux.md). Dataset có 6.652 ảnh với manifest/split theo nhóm lá; xem [dữ liệu](docs/dataset.md). Checkpoint và notebook giữ nguyên, chưa huấn luyện lại. Thực nghiệm đầy đủ và CI thuộc Phase 6; yêu cầu riêng giảng viên vẫn chờ xác nhận.
+
+![Agri Leaf — kết quả nhận dạng và top 3](docs/screenshots/phase5-desktop.jpg)
+
+Ảnh lá minh họa: PlantVillage, ứng viên train của dự án, CC BY-SA 3.0 theo dataset card; xem [ghi nguồn](ACKNOWLEDGEMENTS.md).
 
 ## Phạm vi
 
 Ảnh một lá JPG/JPEG/PNG → một trong sáu lớp: Potato/Tomato × Early blight/Late blight/healthy. Bản gốc dùng PyTorch, ResNet18, Streamlit và có sẵn checkpoint trong `models/leaf_model_final.pth`.
 
-Mục tiêu v1: UI/UX tiếng Việt, top 3 và điểm tin cậy, lịch sử SQLite, xuất CSV, trang đánh giá và tài liệu. Đây là kế hoạch phát triển, chưa phải các chức năng đã hoàn thành của fork.
+Đã có: UI tiếng Việt, chọn ảnh mẫu hoặc upload, xem trước, phân tích, top 3/điểm tin cậy, lịch sử SQLite với thumbnail, lọc/xóa và xuất CSV. Trang Đánh giá hiện hiển thị audit dữ liệu và kiểm chứng kỹ thuật; accuracy/F1/confusion matrix đầy đủ sẽ được bổ sung sau thực nghiệm Phase 6, không dùng số liệu giả.
 
 ## Lấy mã nguồn
 
@@ -36,7 +40,9 @@ python -m venv .venv
 
 Mở http://localhost:8501. Không cần dataset để suy luận bằng checkpoint sẵn có. Windows trên máy kiểm chứng không tải được PyTorch 2.15.0/2.10.0, nên không tự nâng phiên bản đã ghim; xem [lịch sử tương thích](docs/baseline.md). Chưa chứng nhận lockfile trên OS/Python khác.
 
-Upload nội dung JPEG/PNG, tối đa 20 MiB và 16 triệu pixel. Giao diện giữ bố cục gốc; phần model, tiền xử lý và validation nằm trong `src/`. Lịch sử SQLite và UI tiếng Việt thuộc Phase 5, chưa được triển khai.
+Upload nội dung JPEG/PNG, tối đa 20 MiB và 16 triệu pixel. Chọn ảnh → xem trước → bấm **Phân tích ảnh** → đọc kết quả → bấm **Lưu kết quả** nếu cần. Chỉ lưu thumbnail và metadata tại `storage/history.sqlite3`; lịch sử dùng chung trên máy chạy app, chưa có tài khoản riêng. [Cấu hình lịch sử và CSV](docs/history.md).
+
+Không cần tải cả dataset để dùng ảnh mẫu: ứng dụng dùng ảnh cục bộ nếu có, nếu không chỉ tải ảnh được chọn từ snapshot GitHub public và kiểm tra checksum. Suy luận không gửi ảnh đến dịch vụ AI bên ngoài.
 
 Chạy lại kiểm chứng bằng sáu ảnh đã ghim nguồn và checksum:
 
@@ -70,6 +76,8 @@ Khôi phục dữ liệu và chạy audit (cần Git, internet và môi trườn
 - [Baseline CPU và cách tái lập](docs/baseline.md).
 - [Dữ liệu, thống kê và quy tắc đánh giá](docs/dataset.md).
 - [Kiến trúc, API và kết quả hồi quy Phase 4](docs/architecture.md).
+- [UI/UX, ảnh giao diện và nghiệm thu Phase 5](docs/ui-ux.md).
+- [SQLite, quyền riêng tư cục bộ và xuất CSV](docs/history.md).
 - [Quy trình đóng góp](CONTRIBUTING.md).
 - [Changelog](CHANGELOG.md).
 - [GitHub Issues](https://github.com/namphwong/agri-leaf-disease-recognition/issues).
@@ -78,8 +86,9 @@ Khôi phục dữ liệu và chạy audit (cần Git, internet và môi trườn
 ## Cấu trúc hiện tại
 
 ```text
-app.py                     # Giao diện và cache Streamlit
-src/                       # Inference, preprocessing, labels, validation, storage contract
+app.py                     # Điều hướng bốn trang
+src/                       # Inference, preprocessing, labels, validation, SQLite
+src/ui/                    # Nhận dạng, lịch sử, đánh giá, hướng dẫn
 models/                    # Checkpoint gốc
 notebooks/                 # Notebook huấn luyện gốc
 docs/                      # Phạm vi, roadmap, tài liệu nguồn
@@ -87,12 +96,13 @@ scripts/baseline_check.py   # Kiểm chứng CPU và app kế thừa
 scripts/prepare_dataset.py # Tải sáu lớp, audit và split theo nhóm
 reports/baseline/          # Manifest và kết quả kiểm chứng
 reports/dataset/           # Metadata ảnh, thống kê, split và nhãn
-tests/                     # Kiểm tra dữ liệu và hợp đồng pipeline
+tests/                     # 32 test dữ liệu, pipeline, UI và SQLite
 .github/                   # Mẫu PR
 requirements.txt           # Dependencies trực tiếp đã ghim
 requirements-lock.txt      # Toàn bộ runtime Windows/Python 3.11
 ACKNOWLEDGEMENTS.md        # Nguồn và phân biệt đóng góp
 CONTRIBUTING.md            # Quy trình GitHub
+.streamlit/config.toml     # Theme và giới hạn upload
 ```
 
 ## Giới hạn
