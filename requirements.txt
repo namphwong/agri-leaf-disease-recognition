@@ -1,5 +1,6 @@
-streamlit
-torch
-torchvision
-pillow
-numpy
+--extra-index-url https://download.pytorch.org/whl/cpu
+streamlit==1.67.0
+torch==2.8.0+cpu
+torchvision==0.23.0+cpu
+pillow==13.0.0
+numpy==2.4.6

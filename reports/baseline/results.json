@@ -1,0 +1,294 @@
+{
+  "timestamp": "2026-11-12T22:57:33.499813+07:00",
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "processor": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+  "logical_cpus": 16,
+  "torch_threads": 8,
+  "device": "cpu",
+  "versions": {
+    "torch": "2.8.0+cpu",
+    "torchvision": "0.23.0+cpu",
+    "streamlit": "1.67.0",
+    "pillow": "13.0.0",
+    "numpy": "2.4.6"
+  },
+  "checkpoint_sha256": "b20634ad7be7da28e6a2345b7def1c217a877ce89e10d581d9b30ab5d152a963",
+  "checkpoint_bytes": 44798347,
+  "app_sha256": "7690f771e033b05c2c777019a2dc44c4179bbc4213b0dc9f5dab09a079fb4e6b",
+  "notebook_sha256": "7e56f861dc81d01a4c498f33626dd58e2ca12ba8011a81302b39704b8fbe9ec9",
+  "class_order": [
+    "Potato___Early_blight",
+    "Potato___Late_blight",
+    "Potato___healthy",
+    "Tomato___Early_blight",
+    "Tomato___Late_blight",
+    "Tomato___healthy"
+  ],
+  "notebook_printed_classes": [
+    "Potato___Early_blight",
+    "Potato___Late_blight",
+    "Potato___healthy",
+    "Tomato_Early_blight",
+    "Tomato_Late_blight",
+    "Tomato_healthy"
+  ],
+  "checks": {
+    "checkpoint_cpu_load": true,
+    "semantic_class_order": true,
+    "eval_transform_tensor_equal": true,
+    "app_startup": true,
+    "app_six_uploads": true,
+    "invalid_image_handled": true,
+    "http_server_health": true
+  },
+  "http_server": {
+    "health": "ok",
+    "root_status": 200,
+    "loopback_only": true
+  },
+  "notebook_caveats": [
+    "Tomato labels use single underscores; app uses triple underscores; semantic order matches.",
+    "Notebook save filename leaf_model_v2.pth differs from bundled leaf_model_final.pth; original training provenance is not fully reconstructible.",
+    "Original split indices/seed are not saved; smoke samples may overlap training data."
+  ],
+  "model_load_ms": 240.7039999961853,
+  "median_forward_ms": 27.060200001869816,
+  "timing_protocol": "One warm-up per image; 5 CPU forwards per image; excludes decode, preprocessing, UI and softmax; default PyTorch thread count.",
+  "sample_matches": 6,
+  "sample_count": 6,
+  "not_independent_test": true,
+  "predictions": [
+    {
+      "expected": "Potato___Early_blight",
+      "predicted": "Potato___Early_blight",
+      "match": true,
+      "original_size": [
+        256,
+        256
+      ],
+      "confidence": 0.9829162359237671,
+      "top3": [
+        {
+          "label": "Potato___Early_blight",
+          "score": 0.9829162359237671
+        },
+        {
+          "label": "Tomato___Early_blight",
+          "score": 0.013777369633316994
+        },
+        {
+          "label": "Potato___Late_blight",
+          "score": 0.0013979871291667223
+        }
+      ],
+      "forward_ms": [
+        25.807099998928607,
+        27.365699999791104,
+        26.272199997038115,
+        27.146000000357162,
+        25.681400002213195
+      ],
+      "median_forward_ms": 26.272199997038115
+    },
+    {
+      "expected": "Potato___Late_blight",
+      "predicted": "Potato___Late_blight",
+      "match": true,
+      "original_size": [
+        256,
+        256
+      ],
+      "confidence": 0.9402682781219482,
+      "top3": [
+        {
+          "label": "Potato___Late_blight",
+          "score": 0.9402682781219482
+        },
+        {
+          "label": "Tomato___Early_blight",
+          "score": 0.03319695219397545
+        },
+        {
+          "label": "Tomato___Late_blight",
+          "score": 0.026399273425340652
+        }
+      ],
+      "forward_ms": [
+        25.91730000131065,
+        26.215800004138146,
+        28.422000003047287,
+        26.147800002945587,
+        26.455100000021048
+      ],
+      "median_forward_ms": 26.215800004138146
+    },
+    {
+      "expected": "Potato___healthy",
+      "predicted": "Potato___healthy",
+      "match": true,
+      "original_size": [
+        256,
+        256
+      ],
+      "confidence": 0.8091269135475159,
+      "top3": [
+        {
+          "label": "Potato___healthy",
+          "score": 0.8091269135475159
+        },
+        {
+          "label": "Potato___Late_blight",
+          "score": 0.16087248921394348
+        },
+        {
+          "label": "Tomato___healthy",
+          "score": 0.017920399084687233
+        }
+      ],
+      "forward_ms": [
+        28.5132999997586,
+        29.692600000998937,
+        27.19200000137789,
+        30.015500000445172,
+        28.067499995813705
+      ],
+      "median_forward_ms": 28.5132999997586
+    },
+    {
+      "expected": "Tomato___Early_blight",
+      "predicted": "Tomato___Early_blight",
+      "match": true,
+      "original_size": [
+        256,
+        256
+      ],
+      "confidence": 0.9657971858978271,
+      "top3": [
+        {
+          "label": "Tomato___Early_blight",
+          "score": 0.9657971858978271
+        },
+        {
+          "label": "Potato___Late_blight",
+          "score": 0.013889975845813751
+        },
+        {
+          "label": "Tomato___Late_blight",
+          "score": 0.010601078160107136
+        }
+      ],
+      "forward_ms": [
+        31.536299997242168,
+        27.191300003323704,
+        25.617999999667518,
+        26.634400004695635,
+        28.614000002562534
+      ],
+      "median_forward_ms": 27.191300003323704
+    },
+    {
+      "expected": "Tomato___Late_blight",
+      "predicted": "Tomato___Late_blight",
+      "match": true,
+      "original_size": [
+        256,
+        256
+      ],
+      "confidence": 0.9676505327224731,
+      "top3": [
+        {
+          "label": "Tomato___Late_blight",
+          "score": 0.9676505327224731
+        },
+        {
+          "label": "Tomato___Early_blight",
+          "score": 0.021883608773350716
+        },
+        {
+          "label": "Potato___Late_blight",
+          "score": 0.010436024516820908
+        }
+      ],
+      "forward_ms": [
+        25.555000000167638,
+        26.01929999946151,
+        28.182800000649877,
+        29.1711000027135,
+        27.559800000744872
+      ],
+      "median_forward_ms": 27.559800000744872
+    },
+    {
+      "expected": "Tomato___healthy",
+      "predicted": "Tomato___healthy",
+      "match": true,
+      "original_size": [
+        256,
+        256
+      ],
+      "confidence": 0.9984128475189209,
+      "top3": [
+        {
+          "label": "Tomato___healthy",
+          "score": 0.9984128475189209
+        },
+        {
+          "label": "Potato___Early_blight",
+          "score": 0.0008127894252538681
+        },
+        {
+          "label": "Potato___Late_blight",
+          "score": 0.00027551446692086756
+        }
+      ],
+      "forward_ms": [
+        26.789600000483915,
+        26.00009999878239,
+        26.97440000338247,
+        25.78240000002552,
+        27.263700001640245
+      ],
+      "median_forward_ms": 26.789600000483915
+    }
+  ],
+  "app_upload_checks": [
+    {
+      "expected": "Potato___Early_blight",
+      "rendered_label": "Potato - Early blight",
+      "rendered_confidence": "98.29%",
+      "pass": true
+    },
+    {
+      "expected": "Potato___Late_blight",
+      "rendered_label": "Potato - Late blight",
+      "rendered_confidence": "94.03%",
+      "pass": true
+    },
+    {
+      "expected": "Potato___healthy",
+      "rendered_label": "Potato - healthy",
+      "rendered_confidence": "80.91%",
+      "pass": true
+    },
+    {
+      "expected": "Tomato___Early_blight",
+      "rendered_label": "Tomato - Early blight",
+      "rendered_confidence": "96.58%",
+      "pass": true
+    },
+    {
+      "expected": "Tomato___Late_blight",
+      "rendered_label": "Tomato - Late blight",
+      "rendered_confidence": "96.77%",
+      "pass": true
+    },
+    {
+      "expected": "Tomato___healthy",
+      "rendered_label": "Tomato - healthy",
+      "rendered_confidence": "99.84%",
+      "pass": true
+    }
+  ],
+  "ui_check_method": "Streamlit AppTest, file_uploader patched to BytesIO; real app prediction and render path executed. Native browser upload not automated."
+}

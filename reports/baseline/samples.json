@@ -1,0 +1,63 @@
+{
+  "repository": "https://github.com/spMohanty/PlantVillage-Dataset",
+  "revision": "7f7ecc7e1eaca78107e3affe7cb5abd9427e139a",
+  "selection": "First filename lexicographically in GitHub contents API response for each class; response may be capped at 1000 entries.",
+  "purpose": "Six smoke samples; training overlap unknown; not an independent test set.",
+  "license_reference": "https://huggingface.co/datasets/mohanty/PlantVillage",
+  "samples": [
+    {
+      "expected": "Potato___Early_blight",
+      "local_path": "data/baseline/Potato___Early_blight.jpg",
+      "source_path": "raw/color/Potato___Early_blight/001187a0-57ab-4329-baff-e7246a9edeb0___RS_Early.B 8178.JPG",
+      "source_url": "https://raw.githubusercontent.com/spMohanty/PlantVillage-Dataset/7f7ecc7e1eaca78107e3affe7cb5abd9427e139a/raw/color/Potato___Early_blight/001187a0-57ab-4329-baff-e7246a9edeb0___RS_Early.B%208178.JPG",
+      "git_blob_sha": "f856a3e9f4b61edfa5a353961ba57e2c995f139f",
+      "sha256": "100079e00ccf046c761599235a1a73db03980fa4847b2a2fe8ea4092bca6bf5c",
+      "bytes": 20183
+    },
+    {
+      "expected": "Potato___Late_blight",
+      "local_path": "data/baseline/Potato___Late_blight.jpg",
+      "source_path": "raw/color/Potato___Late_blight/0051e5e8-d1c4-4a84-bf3a-a426cdad6285___RS_LB 4640.JPG",
+      "source_url": "https://raw.githubusercontent.com/spMohanty/PlantVillage-Dataset/7f7ecc7e1eaca78107e3affe7cb5abd9427e139a/raw/color/Potato___Late_blight/0051e5e8-d1c4-4a84-bf3a-a426cdad6285___RS_LB%204640.JPG",
+      "git_blob_sha": "e951184960d9767736e5a89e516979af9beb4821",
+      "sha256": "96baa8bba4a2397887e94753a8908e35108a88a1c4715c7eab259a3bfae00b27",
+      "bytes": 12780
+    },
+    {
+      "expected": "Potato___healthy",
+      "local_path": "data/baseline/Potato___healthy.jpg",
+      "source_path": "raw/color/Potato___healthy/00fc2ee5-729f-4757-8aeb-65c3355874f2___RS_HL 1864.JPG",
+      "source_url": "https://raw.githubusercontent.com/spMohanty/PlantVillage-Dataset/7f7ecc7e1eaca78107e3affe7cb5abd9427e139a/raw/color/Potato___healthy/00fc2ee5-729f-4757-8aeb-65c3355874f2___RS_HL%201864.JPG",
+      "git_blob_sha": "66b400ede4f6d1e4a1a77f0d462b98b51da732c0",
+      "sha256": "1c057430715c288100b64ac6136b69f23f8708f92e7e4f0410ac16b110325946",
+      "bytes": 21345
+    },
+    {
+      "expected": "Tomato___Early_blight",
+      "local_path": "data/baseline/Tomato___Early_blight.jpg",
+      "source_path": "raw/color/Tomato___Early_blight/0012b9d2-2130-4a06-a834-b1f3af34f57e___RS_Erly.B 8389.JPG",
+      "source_url": "https://raw.githubusercontent.com/spMohanty/PlantVillage-Dataset/7f7ecc7e1eaca78107e3affe7cb5abd9427e139a/raw/color/Tomato___Early_blight/0012b9d2-2130-4a06-a834-b1f3af34f57e___RS_Erly.B%208389.JPG",
+      "git_blob_sha": "26777f17de50332a6bdb9f068e4217167a698e8a",
+      "sha256": "29b79036b67724f6a76895d17ef1b863ad7a7134e03141b1feb601a591336123",
+      "bytes": 18261
+    },
+    {
+      "expected": "Tomato___Late_blight",
+      "local_path": "data/baseline/Tomato___Late_blight.jpg",
+      "source_path": "raw/color/Tomato___Late_blight/0003faa8-4b27-4c65-bf42-6d9e352ca1a5___RS_Late.B 4946.JPG",
+      "source_url": "https://raw.githubusercontent.com/spMohanty/PlantVillage-Dataset/7f7ecc7e1eaca78107e3affe7cb5abd9427e139a/raw/color/Tomato___Late_blight/0003faa8-4b27-4c65-bf42-6d9e352ca1a5___RS_Late.B%204946.JPG",
+      "git_blob_sha": "e78aea0da1519a5f4a08a07afff6bb27d427d2a2",
+      "sha256": "355d9ed5d0212dfc72eeda78118c55966febe086b60ff46fd7702766e92827d3",
+      "bytes": 11714
+    },
+    {
+      "expected": "Tomato___healthy",
+      "local_path": "data/baseline/Tomato___healthy.jpg",
+      "source_path": "raw/color/Tomato___healthy/000146ff-92a4-4db6-90ad-8fce2ae4fddd___GH_HL Leaf 259.1.JPG",
+      "source_url": "https://raw.githubusercontent.com/spMohanty/PlantVillage-Dataset/7f7ecc7e1eaca78107e3affe7cb5abd9427e139a/raw/color/Tomato___healthy/000146ff-92a4-4db6-90ad-8fce2ae4fddd___GH_HL%20Leaf%20259.1.JPG",
+      "git_blob_sha": "7f5035f24eaecb2a6ac3bff21ba5a391b0452d8b",
+      "sha256": "a294299b0518a50ebc275c0ec4519b022cab8b34735039f6c2a089a911f6964e",
+      "bytes": 15646
+    }
+  ]
+}
