@@ -1,0 +1,53 @@
+{
+  "purpose": "UI demo candidates selected only from the new training partition; not test examples.",
+  "samples": [
+    {
+      "label": "Potato___Early_blight",
+      "local_path": "data/plantvillage-source/raw/color/Potato___Early_blight/002a55fb-7a3d-4a3a-aca8-ce2d5ebc6925___RS_Early.B 8170.JPG",
+      "source_path": "raw/color/Potato___Early_blight/002a55fb-7a3d-4a3a-aca8-ce2d5ebc6925___RS_Early.B 8170.JPG",
+      "sha256": "f82d5fed95db82eb2863eb2b236c3d4f0285a20966bd2048fdf12f97d3f4aa5a",
+      "group_id": "e39a371356b87f9c9e149077",
+      "split": "train"
+    },
+    {
+      "label": "Potato___Late_blight",
+      "local_path": "data/plantvillage-source/raw/color/Potato___Late_blight/0051e5e8-d1c4-4a84-bf3a-a426cdad6285___RS_LB 4640.JPG",
+      "source_path": "raw/color/Potato___Late_blight/0051e5e8-d1c4-4a84-bf3a-a426cdad6285___RS_LB 4640.JPG",
+      "sha256": "96baa8bba4a2397887e94753a8908e35108a88a1c4715c7eab259a3bfae00b27",
+      "group_id": "7cab92ad8eede033545f98da",
+      "split": "train"
+    },
+    {
+      "label": "Potato___healthy",
+      "local_path": "data/plantvillage-source/raw/color/Potato___healthy/04481ca2-f94c-457e-b785-1ac05800b7ec___RS_HL 1930.JPG",
+      "source_path": "raw/color/Potato___healthy/04481ca2-f94c-457e-b785-1ac05800b7ec___RS_HL 1930.JPG",
+      "sha256": "aed52452d81d81597b1bac54981bcae6952906110f7aa47be945a6a28f4a7e60",
+      "group_id": "81a007361c4108499174ecdc",
+      "split": "train"
+    },
+    {
+      "label": "Tomato___Early_blight",
+      "local_path": "data/plantvillage-source/raw/color/Tomato___Early_blight/0012b9d2-2130-4a06-a834-b1f3af34f57e___RS_Erly.B 8389.JPG",
+      "source_path": "raw/color/Tomato___Early_blight/0012b9d2-2130-4a06-a834-b1f3af34f57e___RS_Erly.B 8389.JPG",
+      "sha256": "29b79036b67724f6a76895d17ef1b863ad7a7134e03141b1feb601a591336123",
+      "group_id": "b0c8d6fb327655d3c76b2e11",
+      "split": "train"
+    },
+    {
+      "label": "Tomato___Late_blight",
+      "local_path": "data/plantvillage-source/raw/color/Tomato___Late_blight/0003faa8-4b27-4c65-bf42-6d9e352ca1a5___RS_Late.B 4946.JPG",
+      "source_path": "raw/color/Tomato___Late_blight/0003faa8-4b27-4c65-bf42-6d9e352ca1a5___RS_Late.B 4946.JPG",
+      "sha256": "355d9ed5d0212dfc72eeda78118c55966febe086b60ff46fd7702766e92827d3",
+      "group_id": "8f678d5a1b5a857759bda0a9",
+      "split": "train"
+    },
+    {
+      "label": "Tomato___healthy",
+      "local_path": "data/plantvillage-source/raw/color/Tomato___healthy/0031da2a-8edd-468f-a8b1-106657717a32___RS_HL 0105.JPG",
+      "source_path": "raw/color/Tomato___healthy/0031da2a-8edd-468f-a8b1-106657717a32___RS_HL 0105.JPG",
+      "sha256": "fc4556527d5d059c9259d993b9b4774a2cee841b6cfab0444da17a6c0586d491",
+      "group_id": "4fad069500182cf1e39e1d8d",
+      "split": "train"
+    }
+  ]
+}

@@ -50,6 +50,10 @@ Thumbs.db
 data/
 dataset/
 datasets/
+!reports/dataset/
+reports/dataset/*
+!reports/dataset/*.csv
+!reports/dataset/*.json
 uploads/
 storage/
 *.db
