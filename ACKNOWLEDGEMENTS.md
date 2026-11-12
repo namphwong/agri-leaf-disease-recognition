@@ -28,4 +28,6 @@ Các thành phần kế thừa: `app.py`, checkpoint `models/leaf_model_final.pt
 
 Đã thực hiện ở Phase 3: tải đầy đủ sáu lớp, audit 6.652 ảnh, cách ly metadata chưa đủ, xử lý nhóm ảnh trùng, tạo split tái lập, chọn ứng viên demo từ train và kiểm thử chống rò rỉ. Chưa huấn luyện lại hoặc đánh giá toàn dataset.
 
+Đã thực hiện ở Phase 4: tách logic kế thừa từ app thành module, chuẩn hóa PredictionResult, nhận diện phiên bản theo checksum, validation ảnh, hợp đồng record lịch sử và kiểm chứng hồi quy. App đã được sửa để gọi các module; bố cục gốc được giữ, checkpoint/notebook giữ nguyên. Không tính logic/mô hình kế thừa là kiến trúc AI tự phát minh.
+
 Dự kiến ở các phase sau: tái cấu trúc code, UI/UX tiếng Việt, lịch sử SQLite, xuất CSV, đánh giá dataset và báo cáo. Các mục dự kiến chưa được tính là đã triển khai.

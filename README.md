@@ -6,7 +6,7 @@ Fork từ [Smart Leaf AI của spneoarm](https://github.com/spneoarm/smart-leaf-
 
 ## Trạng thái
 
-Phase 0–2 đã hoàn thành. **Phase 3 đã chuẩn bị và audit 6.652 ảnh**, tạo manifest cùng split theo nhóm lá; xem [dữ liệu và thiết kế đánh giá](docs/dataset.md). Mô hình đã chạy baseline CPU, sáu ảnh mẫu khớp nhãn; [chi tiết baseline](docs/baseline.md). Ứng dụng, notebook và checkpoint vẫn là bản kế thừa; chưa thay UI/UX hoặc huấn luyện lại. Yêu cầu riêng của giảng viên về huấn luyện/so sánh thuật toán chờ xác nhận.
+Phase 0–3 đã hoàn thành. **Phase 4 đã tách pipeline khỏi giao diện**, chuẩn hóa kết quả và kiểm chứng hồi quy với mã gốc; xem [kiến trúc](docs/architecture.md). Dataset có 6.652 ảnh với manifest/split theo nhóm lá; xem [dữ liệu](docs/dataset.md). Checkpoint và notebook giữ nguyên; chưa làm lại UI/UX hoặc huấn luyện lại. Yêu cầu riêng của giảng viên về huấn luyện/so sánh thuật toán chờ xác nhận.
 
 ## Phạm vi
 
@@ -35,6 +35,8 @@ python -m venv .venv
 ```
 
 Mở http://localhost:8501. Không cần dataset để suy luận bằng checkpoint sẵn có. Windows trên máy kiểm chứng không tải được PyTorch 2.15.0/2.10.0, nên không tự nâng phiên bản đã ghim; xem [lịch sử tương thích](docs/baseline.md). Chưa chứng nhận lockfile trên OS/Python khác.
+
+Upload nội dung JPEG/PNG, tối đa 20 MiB và 16 triệu pixel. Giao diện giữ bố cục gốc; phần model, tiền xử lý và validation nằm trong `src/`. Lịch sử SQLite và UI tiếng Việt thuộc Phase 5, chưa được triển khai.
 
 Chạy lại kiểm chứng bằng sáu ảnh đã ghim nguồn và checksum:
 
@@ -67,6 +69,7 @@ Khôi phục dữ liệu và chạy audit (cần Git, internet và môi trườn
 - [Roadmap Phase 0–8](docs/roadmap.md).
 - [Baseline CPU và cách tái lập](docs/baseline.md).
 - [Dữ liệu, thống kê và quy tắc đánh giá](docs/dataset.md).
+- [Kiến trúc, API và kết quả hồi quy Phase 4](docs/architecture.md).
 - [Quy trình đóng góp](CONTRIBUTING.md).
 - [Changelog](CHANGELOG.md).
 - [GitHub Issues](https://github.com/namphwong/agri-leaf-disease-recognition/issues).
@@ -75,7 +78,8 @@ Khôi phục dữ liệu và chạy audit (cần Git, internet và môi trườn
 ## Cấu trúc hiện tại
 
 ```text
-app.py                     # App kế thừa, chưa thay đổi
+app.py                     # Giao diện và cache Streamlit
+src/                       # Inference, preprocessing, labels, validation, storage contract
 models/                    # Checkpoint gốc
 notebooks/                 # Notebook huấn luyện gốc
 docs/                      # Phạm vi, roadmap, tài liệu nguồn
@@ -83,7 +87,7 @@ scripts/baseline_check.py   # Kiểm chứng CPU và app kế thừa
 scripts/prepare_dataset.py # Tải sáu lớp, audit và split theo nhóm
 reports/baseline/          # Manifest và kết quả kiểm chứng
 reports/dataset/           # Metadata ảnh, thống kê, split và nhãn
-tests/                     # Kiểm tra rò rỉ dữ liệu và cách ly
+tests/                     # Kiểm tra dữ liệu và hợp đồng pipeline
 .github/                   # Mẫu PR
 requirements.txt           # Dependencies trực tiếp đã ghim
 requirements-lock.txt      # Toàn bộ runtime Windows/Python 3.11

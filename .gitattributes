@@ -1,3 +1,6 @@
 # Keep generated metadata byte-stable so manifest SHA-256 survives checkout.
 reports/dataset/*.csv text eol=lf
 reports/dataset/*.json text eol=lf
+# Keep the refactored source hashes stable across checkout platforms.
+app.py text eol=lf
+src/*.py text eol=lf
