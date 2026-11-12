@@ -4,3 +4,4 @@ reports/dataset/*.json text eol=lf
 # Keep the refactored source hashes stable across checkout platforms.
 app.py text eol=lf
 src/*.py text eol=lf
+src/**/*.py text eol=lf

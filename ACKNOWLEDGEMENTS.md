@@ -30,4 +30,6 @@ Các thành phần kế thừa: `app.py`, checkpoint `models/leaf_model_final.pt
 
 Đã thực hiện ở Phase 4: tách logic kế thừa từ app thành module, chuẩn hóa PredictionResult, nhận diện phiên bản theo checksum, validation ảnh, hợp đồng record lịch sử và kiểm chứng hồi quy. App đã được sửa để gọi các module; bố cục gốc được giữ, checkpoint/notebook giữ nguyên. Không tính logic/mô hình kế thừa là kiến trúc AI tự phát minh.
 
-Dự kiến ở các phase sau: tái cấu trúc code, UI/UX tiếng Việt, lịch sử SQLite, xuất CSV, đánh giá dataset và báo cáo. Các mục dự kiến chưa được tính là đã triển khai.
+Đã thực hiện ở Phase 5: thiết kế Agri Leaf tiếng Việt với bốn trang; SQLite/thumbnail, lọc/xóa, CSV; ảnh mẫu theo manifest train; kiểm thử UI, lỗi và hồi quy. Screenshot trong `docs/screenshots/` có ảnh lá PlantVillage từ manifest train, ghi nguồn/CC BY-SA 3.0 theo dataset card. Mã UI mới theo MIT; quyền của ảnh nguồn vẫn giữ theo nguồn.
+
+Dự kiến ở các phase sau: thực nghiệm đánh giá mô hình đầy đủ, CI, báo cáo, slide và phát hành. Các mục dự kiến chưa được tính là đã triển khai.

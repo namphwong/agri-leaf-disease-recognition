@@ -249,6 +249,8 @@ def run_checks(manifest, classes, selected, result_name):
         else:
             with patch("streamlit.file_uploader", return_value=payload):
                 test.run()
+                if any(button.key == "analyze" for button in test.button):
+                    test.button(key="analyze").click().run()
         assert not test.exception, [str(item.value) for item in test.exception]
         return test
 
@@ -258,13 +260,15 @@ def run_checks(manifest, classes, selected, result_name):
     for sample, prediction in zip(manifest["samples"], predictions):
         app = app_run(io.BytesIO((ROOT / sample["local_path"]).read_bytes()))
         assert not app.error, [item.value for item in app.error]
-        expected_label = prediction["predicted"].replace("___", " - ").replace("_", " ")
-        assert app.metric[0].value == expected_label
-        assert app.metric[1].value == f'{prediction["confidence"] * 100:.2f}%'
-        app_uploads.append({"expected": sample["expected"], "rendered_label": app.metric[0].value,
-                            "rendered_confidence": app.metric[1].value, "pass": True})
+        from src.labels import vietnamese_label
+        expected_label = vietnamese_label(prediction["predicted"])
+        assert expected_label in [item.value for item in app.subheader]
+        confidence_metric = next(item for item in app.metric if item.label == "Điểm tin cậy")
+        assert confidence_metric.value == f'{prediction["confidence"] * 100:.2f}%'
+        app_uploads.append({"expected": sample["expected"], "rendered_label": expected_label,
+                            "rendered_confidence": confidence_metric.value, "pass": True})
     corrupt = app_run(io.BytesIO(b"this is not a valid image"))
-    assert any("Prediction failed" in item.value for item in corrupt.error)
+    assert any("Không thể đọc ảnh" in item.value for item in corrupt.error)
     http_server = check_http_server()
 
     all_times = [value for prediction in predictions for value in prediction["forward_ms"]]
@@ -286,7 +290,7 @@ def run_checks(manifest, classes, selected, result_name):
         "regression_reference_commit": REFERENCE_COMMIT,
         "regression_tolerance": 1e-7,
         "regression_deltas": regression_deltas,
-        "service_sha256": {path.name: sha256(path) for path in sorted((ROOT / "src").glob("*.py"))},
+        "service_sha256": {path.relative_to(ROOT / "src").as_posix(): sha256(path) for path in sorted((ROOT / "src").rglob("*.py"))},
         "http_server": http_server,
         "notebook_caveats": ["Tomato labels use single underscores; app uses triple underscores; semantic order matches.",
                              "Notebook save filename leaf_model_v2.pth differs from bundled leaf_model_final.pth; original training provenance is not fully reconstructible.",

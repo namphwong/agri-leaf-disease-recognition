@@ -21,3 +21,19 @@ DISEASE_INFO = {
 
 def pretty_label(label: str) -> str:
     return label.replace("___", " - ").replace("_", " ")
+
+
+CROP_NAMES = {"Potato": "Khoai tây", "Tomato": "Cà chua"}
+CONDITION_NAMES = {"Early_blight": "Early blight", "Late_blight": "Late blight", "healthy": "Lá khỏe"}
+
+
+def vietnamese_label(label: str) -> str:
+    crop, condition = label.split("___")
+    return f"{CROP_NAMES[crop]} · {CONDITION_NAMES[condition]}"
+
+
+DISEASE_INFO_VI = {
+    "Early_blight": "Mô hình nhận thấy đặc điểm gần với nhóm Early blight trong dữ liệu học. Cần quan sát thêm điều kiện cây và kiểm chứng chuyên môn trước khi đưa ra kết luận.",
+    "Late_blight": "Mô hình nhận thấy đặc điểm gần với nhóm Late blight trong dữ liệu học. Ảnh đơn lẻ chưa đủ để kết luận nguyên nhân hoặc đưa ra cách xử lý.",
+    "healthy": "Ảnh gần với nhóm lá khỏe trong dữ liệu học. Kết quả này không loại trừ mọi bệnh hoặc vấn đề khác của cây.",
+}

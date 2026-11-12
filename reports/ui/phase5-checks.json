@@ -1,0 +1,62 @@
+{
+  "created_at": "2026-11-12T23:51:16.026324+07:00",
+  "test_suite": {
+    "command": ".venv/Scripts/python.exe -m unittest discover -s tests -v",
+    "passed": 32,
+    "failed": 0,
+    "note": "Observed successful run on 2026-11-12; UI tests use temporary databases and synthetic in-memory image fixtures."
+  },
+  "browser_checks": {
+    "sample_analysis": true,
+    "explicit_save": true,
+    "history_preview": true,
+    "csv_download": true,
+    "evaluation_page": true,
+    "guide_page": true,
+    "qa_database": "storage/qa-ui.sqlite3",
+    "native_file_chooser_automated": false
+  },
+  "responsive": {
+    "desktop": [
+      1280,
+      900
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "recognition_mobile_document_width": 390,
+    "evaluation_mobile_document_width": 390,
+    "horizontal_document_overflow": false
+  },
+  "download_check": {
+    "csv_rows": 1,
+    "sha256": "c708978feeef1d5d9f4205ed8269c8c4350f8095b8956c7d24fad39e07ee4e75",
+    "utf8_bom": true
+  },
+  "screenshots": [
+    {
+      "path": "docs/screenshots/phase5-desktop.jpg",
+      "size": [
+        1280,
+        900
+      ],
+      "sha256": "7e31e40917f2e9c3776909cea0697a8df7a48666c02fef8b3697d36c2aee5cca"
+    },
+    {
+      "path": "docs/screenshots/phase5-mobile.jpg",
+      "size": [
+        390,
+        844
+      ],
+      "sha256": "f7397c76a864d1c18366b4830ffb0af187db81f1dde5b351b9110395ff594d92"
+    }
+  ],
+  "regression_report": "reports/baseline/phase5-results.json",
+  "max_probability_delta": 0.0,
+  "limitations": [
+    "No independent test accuracy claimed. Full model evaluation belongs to Phase 6.",
+    "Browser checked sample flow; native file chooser was not automated.",
+    "Local shared SQLite history, no authentication or multi-user isolation."
+  ]
+}
