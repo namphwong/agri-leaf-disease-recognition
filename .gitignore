@@ -1,6 +1,8 @@
 # Environment variables
 .env
 .env.local
+.env.*
+!.env.example
 
 # Virtual environments
 venv/
@@ -45,6 +47,15 @@ Thumbs.db
 
 # Large files and datasets
 data/
+dataset/
+datasets/
+uploads/
+storage/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
 *.zip
 
 # Testing and coverage
