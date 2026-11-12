@@ -6,7 +6,7 @@ Dự án fork từ [Smart Leaf AI](https://github.com/spneoarm/smart-leaf-ai), t
 
 Các thành phần kế thừa: `app.py`, checkpoint `models/leaf_model_final.pth`, notebook `notebooks/plant_leaf_disease_classification_training.ipynb`, dependencies, ảnh demo và mô tả kết quả trong README gốc. Bản README gốc được giữ tại `docs/upstream-README.md`; demo liên kết trong đó là của tác giả gốc.
 
-93,69% test accuracy là số liệu tác giả công bố. Dự án namphwong chưa tự kiểm chứng kết quả hay chạy baseline tại Phase 0–1.
+93,69% test accuracy là số liệu tác giả công bố. Phase 2 của namphwong chỉ kiểm chứng sáu ảnh mẫu và runtime CPU, không tái lập test set gốc; xem `docs/baseline.md`.
 
 ## Dữ liệu
 
@@ -23,4 +23,6 @@ Các thành phần kế thừa: `app.py`, checkpoint `models/leaf_model_final.pt
 
 Đã thực hiện trong Phase 0–1: thiết lập fork, đặc tả, kế hoạch, quy trình GitHub, tài liệu ghi nguồn và quản lý công việc.
 
-Dự kiến ở các phase sau: tái cấu trúc code, UI/UX tiếng Việt, lịch sử SQLite, xuất CSV, thực nghiệm và báo cáo. Các mục dự kiến chưa được tính là đã triển khai.
+Đã thực hiện ở Phase 2: môi trường CPU đã kiểm chứng, ghim dependencies, manifest sáu ảnh mẫu, script kiểm chứng pipeline/app và kết quả baseline có giới hạn rõ ràng. Không thay đổi app, checkpoint hoặc notebook gốc.
+
+Dự kiến ở các phase sau: tái cấu trúc code, UI/UX tiếng Việt, lịch sử SQLite, xuất CSV, đánh giá dataset và báo cáo. Các mục dự kiến chưa được tính là đã triển khai.

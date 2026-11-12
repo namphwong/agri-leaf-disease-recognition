@@ -1,6 +1,6 @@
 # Kế hoạch triển khai
 
-Ngày bắt đầu: 12/11/2026. Ước lượng 12 ngày làm việc và 2 ngày dự phòng; không phải deadline học phần. Chỉ Phase 0–1 được triển khai trong đợt hiện tại.
+Ngày bắt đầu: 12/11/2026. Ước lượng 12 ngày làm việc và 2 ngày dự phòng; không phải deadline học phần. Đã triển khai Phase 0–2; ngày trong bảng là kế hoạch ước lượng ban đầu.
 
 | Phase | Công việc và đầu ra | Gate trước khi chuyển tiếp | Ước lượng |
 |---|---|---|---|
@@ -24,4 +24,4 @@ Phase 2 và 3 là cơ sở cho Phase 4–6. Nếu giảng viên yêu cầu tự 
 - M2 — Hoàn thiện ứng dụng: Phase 4–5.
 - M3 — Đánh giá và bàn giao: Phase 6–8.
 
-Issue là nguồn theo dõi trạng thái thực thi. Phase 0 đã có đặc tả ban đầu, các yêu cầu riêng học phần chờ xác nhận. Phase 1 được nghiệm thu sau khi PR tài liệu đã tích hợp vào main và kiểm tra remote/public thành công. Phase 2–8 chưa thực hiện.
+Issue là nguồn theo dõi trạng thái thực thi. Phase 0–1 đã hoàn thành qua PR #11. Phase 2 có baseline CPU, kiểm tra sáu ảnh và ứng dụng, lockfile cùng tài liệu trong `docs/baseline.md`; trạng thái tích hợp theo issue #3. Yêu cầu riêng học phần vẫn chờ xác nhận tại issue #2. Phase 3–8 chưa thực hiện.
