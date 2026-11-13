@@ -5,3 +5,6 @@ reports/dataset/*.json text eol=lf
 app.py text eol=lf
 src/*.py text eol=lf
 src/**/*.py text eol=lf
+scripts/evaluate.py text eol=lf
+reports/evaluation/*.json text eol=lf
+reports/evaluation/*.csv text eol=lf

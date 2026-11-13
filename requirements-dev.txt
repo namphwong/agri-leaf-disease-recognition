@@ -1,0 +1,2 @@
+# Evaluation figures only; runtime versions remain in requirements-lock.txt.
+matplotlib==3.10.8

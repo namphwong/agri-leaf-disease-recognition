@@ -64,6 +64,8 @@ class AppFlowTests(unittest.TestCase):
             self.assert_healthy()
         self.app.radio(key="navigation").set_value("Đánh giá").run()
         self.assertTrue(any("không phải độ chính xác 100%" in e.value for e in self.app.info))
+        self.assertEqual(next(m.value for m in self.app.metric if m.label == "Accuracy (kiểm chứng)"), "92.27%")
+        self.assertTrue(any("không phải test độc lập" in e.value for e in self.app.warning))
 
     def test_corrupt_upload_does_not_create_prediction(self):
         with patch("streamlit.file_uploader", return_value=io.BytesIO(b"bad image")):
