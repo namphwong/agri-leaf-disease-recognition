@@ -1,12 +1,14 @@
 # Agri Leaf Disease Recognition
 
+[![CI](https://github.com/namphwong/agri-leaf-disease-recognition/actions/workflows/ci.yml/badge.svg)](https://github.com/namphwong/agri-leaf-disease-recognition/actions/workflows/ci.yml)
+
 Đồ án học phần **Nhận dạng mẫu** của **namphwong**: xây dựng ứng dụng nhận dạng bệnh trên lá khoai tây và cà chua sử dụng ResNet18.
 
 Fork từ [Smart Leaf AI của spneoarm](https://github.com/spneoarm/smart-leaf-ai), giữ nguyên lịch sử và [MIT License](LICENSE). Chi tiết kế thừa tại [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md); [README gốc](docs/upstream-README.md) được lưu để đối chiếu.
 
 ## Trạng thái
 
-Phase 0–4 đã hoàn thành. **Phase 5 đã có giao diện Agri Leaf tiếng Việt, lịch sử SQLite và xuất CSV**, cùng trang Đánh giá/Hướng dẫn; xem [UI/UX và nghiệm thu](docs/ui-ux.md). Dataset có 6.652 ảnh với manifest/split theo nhóm lá; xem [dữ liệu](docs/dataset.md). Checkpoint và notebook giữ nguyên, chưa huấn luyện lại. Thực nghiệm đầy đủ và CI thuộc Phase 6; yêu cầu riêng giảng viên vẫn chờ xác nhận.
+Phase 0–5 đã hoàn thành. **Phase 6 đã kiểm chứng checkpoint trên 776 ảnh, công bố metrics/confusion matrix/ví dụ lỗi và CI**; xem [thực nghiệm](docs/evaluation.md). Agri Leaf có UI tiếng Việt, SQLite/CSV và dữ liệu sáu lớp. Checkpoint/notebook giữ nguyên, chưa huấn luyện lại. Các chỉ số là kiểm chứng có nguy cơ trùng huấn luyện, không phải test độc lập; yêu cầu riêng giảng viên vẫn chờ xác nhận.
 
 ![Agri Leaf — kết quả nhận dạng và top 3](docs/screenshots/phase5-desktop.jpg)
 
@@ -16,7 +18,7 @@ Phase 0–4 đã hoàn thành. **Phase 5 đã có giao diện Agri Leaf tiếng 
 
 Ảnh một lá JPG/JPEG/PNG → một trong sáu lớp: Potato/Tomato × Early blight/Late blight/healthy. Bản gốc dùng PyTorch, ResNet18, Streamlit và có sẵn checkpoint trong `models/leaf_model_final.pth`.
 
-Đã có: UI tiếng Việt, chọn ảnh mẫu hoặc upload, xem trước, phân tích, top 3/điểm tin cậy, lịch sử SQLite với thumbnail, lọc/xóa và xuất CSV. Trang Đánh giá hiện hiển thị audit dữ liệu và kiểm chứng kỹ thuật; accuracy/F1/confusion matrix đầy đủ sẽ được bổ sung sau thực nghiệm Phase 6, không dùng số liệu giả.
+Đã có: UI tiếng Việt, chọn ảnh mẫu hoặc upload, xem trước, phân tích, top 3/điểm tin cậy, lịch sử SQLite với thumbnail, lọc/xóa và CSV. Trang Đánh giá có accuracy, precision/recall/F1 từng lớp, confusion matrix, ví dụ lỗi và thời gian từ thực nghiệm thực tế, kèm phạm vi và giới hạn.
 
 ## Lấy mã nguồn
 
@@ -56,6 +58,7 @@ Chạy lại kiểm chứng bằng sáu ảnh đã ghim nguồn và checksum:
 - [Dataset card](https://huggingface.co/datasets/mohanty/PlantVillage), công bố CC BY-SA 3.0; dữ liệu có điều kiện riêng, không thuộc MIT của code.
 - Tác giả gốc báo cáo test accuracy **93,69%**. Đây không phải kết quả namphwong tự đo.
 - Baseline tự chạy: **6/6 ảnh mẫu khớp nhãn**, median CPU forward **27,06 ms/ảnh**; đây là smoke check, không phải accuracy test độc lập. [Kết quả thô](reports/baseline/results.json).
+- Phase 6: **accuracy 92,27%, macro F1 91,85%**, 716/776 ảnh khớp nhãn, 194 nhóm lá; median decode + preprocessing + CPU prediction **33,59 ms/ảnh**. Đây là kiểm chứng checkpoint kế thừa có thể trùng train, không phải test độc lập. [Báo cáo và cách diễn giải](docs/evaluation.md).
 - Không coi tập ảnh lấy từ PlantVillage là test độc lập của checkpoint kế thừa khi chưa xác định giao nhau với tập huấn luyện.
 
 Phase 3 đã tải đủ 6.652 ảnh của sáu lớp vào `data/plantvillage-source/`, khoảng 110,31 MiB ảnh. Không có ảnh lỗi giải mã; có 14 cặp trùng chính xác. 1.582 ảnh thiếu mapping nhóm lá được giữ riêng; 5.070 ảnh đủ điều kiện được chia train/validation/test = **3.546/748/776**, seed 42, theo nhóm lá và các liên kết ảnh trùng. Đây là split dành cho huấn luyện lại, không tạo ra test độc lập cho checkpoint kế thừa.
@@ -78,6 +81,7 @@ Khôi phục dữ liệu và chạy audit (cần Git, internet và môi trườn
 - [Kiến trúc, API và kết quả hồi quy Phase 4](docs/architecture.md).
 - [UI/UX, ảnh giao diện và nghiệm thu Phase 5](docs/ui-ux.md).
 - [SQLite, quyền riêng tư cục bộ và xuất CSV](docs/history.md).
+- [Kết quả thực nghiệm Phase 6, biểu đồ và CI](docs/evaluation.md).
 - [Quy trình đóng góp](CONTRIBUTING.md).
 - [Changelog](CHANGELOG.md).
 - [GitHub Issues](https://github.com/namphwong/agri-leaf-disease-recognition/issues).
@@ -96,14 +100,26 @@ scripts/baseline_check.py   # Kiểm chứng CPU và app kế thừa
 scripts/prepare_dataset.py # Tải sáu lớp, audit và split theo nhóm
 reports/baseline/          # Manifest và kết quả kiểm chứng
 reports/dataset/           # Metadata ảnh, thống kê, split và nhãn
-tests/                     # 32 test dữ liệu, pipeline, UI và SQLite
+reports/evaluation/        # 776 dự đoán, metrics, confusion matrix và hình minh họa
+tests/                     # 39 test dữ liệu, pipeline, UI, SQLite và đánh giá
 .github/                   # Mẫu PR
 requirements.txt           # Dependencies trực tiếp đã ghim
 requirements-lock.txt      # Toàn bộ runtime Windows/Python 3.11
 ACKNOWLEDGEMENTS.md        # Nguồn và phân biệt đóng góp
 CONTRIBUTING.md            # Quy trình GitHub
 .streamlit/config.toml     # Theme và giới hạn upload
+.github/workflows/ci.yml   # Kiểm thử offline, không train mỗi commit
 ```
+
+Xuất lại thực nghiệm (cần dữ liệu Phase 3 và dependencies vẽ hình bổ sung):
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe scripts/evaluate.py
+.\.venv\Scripts\python.exe scripts/check_evaluation.py
+```
+
+Chạy test/đọc báo cáo không cần matplotlib hoặc tải toàn dataset. CI dùng runtime lock, không chạy huấn luyện hoặc đánh giá lại 776 ảnh mỗi commit.
 
 ## Giới hạn
 

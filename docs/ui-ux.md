@@ -1,5 +1,7 @@
 # UI/UX và nghiệm thu Phase 5
 
+Cập nhật Phase 6: trang Đánh giá đã bổ sung metrics 776 ảnh, confusion matrix, ví dụ/thời gian và tải JSON có kiểm tra toàn vẹn; xem [thực nghiệm](evaluation.md). Nội dung dưới đây ghi phạm vi và bằng chứng lịch sử Phase 5.
+
 Ngày hoàn thành triển khai: 12/11/2026. Sản phẩm Streamlit **Agri Leaf**, tiếng Việt, tông xanh lá trên nền sáng. Bốn mục điều hướng: Nhận dạng, Lịch sử, Đánh giá, Hướng dẫn. Không thêm framework hoặc dependency runtime mới.
 
 ## Thiết kế và luồng
