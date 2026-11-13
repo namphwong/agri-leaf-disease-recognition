@@ -1,5 +1,7 @@
 # Dữ liệu và thiết kế đánh giá — Phase 3
 
+Cập nhật Phase 6: đã chạy checkpoint kế thừa trên 776 hàng test đủ điều kiện, dưới phạm vi kiểm chứng có nguy cơ trùng train, không huấn luyện lại; xem [thực nghiệm và giới hạn](evaluation.md). Thiết kế split và các checksum của Phase 3 dưới đây giữ nguyên.
+
 Ngày chuẩn bị: **12/11/2026**, Asia/Bangkok. Đã tải và audit đầy đủ sáu lớp trong phạm vi đề tài; chưa huấn luyện hoặc đánh giá toàn bộ mô hình ở phase này.
 
 ## 1. Nguồn, phiên bản và giấy phép

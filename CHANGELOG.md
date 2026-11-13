@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+### Added — Phase 6, 2026-11-13
+
+- Kiểm chứng checkpoint kế thừa trên 776 ảnh/194 nhóm: accuracy 92,27%, macro F1 91,85%; không phải test độc lập.
+- Dự đoán từng ảnh, per-class metrics, confusion matrix, group bootstrap, biểu đồ thời gian và ví dụ đúng/sai có nguồn.
+- Runner đánh giá, kiểm tra hash/cohort/metrics từ CSV và test từ chối báo cáo sai; tổng 39 test.
+- GitHub Actions Windows/Python 3.11.9, runtime lock, kiểm tra cú pháp/test/artifacts offline; không train trên mỗi commit.
+- Trang Đánh giá hiển thị chỉ số có kiểm chứng và điều kiện diễn giải; JSON download, biểu đồ và screenshot.
+- Dependencies vẽ hình bổ sung riêng; không đổi runtime lock, checkpoint, preprocessing hoặc dataset split.
+
 ### Added — Phase 5, 2026-11-12
 
 - Giao diện Agri Leaf tiếng Việt: nhận dạng, lịch sử, đánh giá và hướng dẫn; theme sáng, bố cục responsive.

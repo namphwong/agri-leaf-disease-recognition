@@ -32,4 +32,6 @@ Các thành phần kế thừa: `app.py`, checkpoint `models/leaf_model_final.pt
 
 Đã thực hiện ở Phase 5: thiết kế Agri Leaf tiếng Việt với bốn trang; SQLite/thumbnail, lọc/xóa, CSV; ảnh mẫu theo manifest train; kiểm thử UI, lỗi và hồi quy. Screenshot trong `docs/screenshots/` có ảnh lá PlantVillage từ manifest train, ghi nguồn/CC BY-SA 3.0 theo dataset card. Mã UI mới theo MIT; quyền của ảnh nguồn vẫn giữ theo nguồn.
 
-Dự kiến ở các phase sau: thực nghiệm đánh giá mô hình đầy đủ, CI, báo cáo, slide và phát hành. Các mục dự kiến chưa được tính là đã triển khai.
+Đã thực hiện ở Phase 6: đánh giá mô tả 776 ảnh, metrics có thể dựng lại từ dự đoán, biểu đồ matplotlib, phân tích lỗi, kiểm tra artifacts và CI GitHub Actions. `reports/evaluation/examples.png` chứa 12 ảnh test PlantVillage theo `examples.json`, ghi nguồn và CC BY-SA 3.0 của ảnh theo dataset card; không coi các ảnh này là dữ liệu chưa từng được checkpoint gốc học. Chưa huấn luyện mô hình mới.
+
+Dự kiến ở các phase sau: báo cáo, slide/video và phát hành. Huấn luyện/so sánh thuật toán bổ sung phụ thuộc yêu cầu học phần chưa xác nhận. Các mục dự kiến chưa được tính là đã triển khai.

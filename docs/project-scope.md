@@ -5,7 +5,7 @@
 - Học phần: Nhận dạng mẫu.
 - Tên đề tài: Xây dựng ứng dụng nhận dạng bệnh trên lá khoai tây và cà chua sử dụng ResNet18.
 - Repository: https://github.com/namphwong/agri-leaf-disease-recognition
-- Trạng thái: Phase 0–4 đã hoàn thành, Phase 5 có UI tiếng Việt/SQLite/CSV và minh chứng; thực nghiệm đầy đủ Phase 6 chưa thực hiện. Yêu cầu riêng giảng viên chờ xác nhận.
+- Trạng thái: Phase 0–5 hoàn thành; Phase 6 có kiểm chứng 776 ảnh, metrics/biểu đồ và CI. Đây không phải test độc lập của checkpoint kế thừa. Yêu cầu riêng giảng viên chờ xác nhận.
 
 ## 1. Mục tiêu và người dùng
 
@@ -31,6 +31,7 @@ Giữ tên bệnh tiếng Anh đến khi xác minh thuật ngữ tiếng Việt.
 - Python, PyTorch/torchvision, ResNet18, Streamlit; SQLite khi xây chức năng lịch sử.
 - Kế thừa checkpoint và notebook gốc; đã kiểm chứng CPU tại Phase 2, xem `docs/baseline.md`.
 - Môi trường đã kiểm chứng: Python 3.11.9 x64, torch 2.8.0+cpu, torchvision 0.23.0+cpu; phiên bản được ghim trong requirements và lockfile.
+- Phase 6 thêm matplotlib 3.10.8 cùng dependency bổ sung ghim tại `requirements-dev.txt` để xuất hình; runtime lock không đổi. Báo cáo kiểm chứng và CI xem `docs/evaluation.md`.
 - Không cần tài khoản người dùng, dịch vụ trả phí hoặc API bên ngoài cho luồng chính.
 - Phase 4 tách dịch vụ vào `src/`; Phase 5 thêm `src/ui/`, SQLite cục bộ, thumbnail và CSV. Upload JPEG/PNG 20 MiB/16 triệu pixel. Xem `docs/architecture.md` và `docs/ui-ux.md`.
 - Phase 5 có `.env.example` minh họa `AGRI_HISTORY_PATH` tùy chọn, không phải secret; app không tự đọc `.env`. Xem `docs/history.md`.

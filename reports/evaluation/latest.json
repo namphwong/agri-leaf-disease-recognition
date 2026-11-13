@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-11-13T22:30:26.671186+07:00",
+  "scope": "descriptive_inherited_checkpoint",
+  "independent_test": false,
+  "warning_vi": "Kiểm chứng trên 776 ảnh thuộc partition test mới. Checkpoint kế thừa có thể đã học các ảnh này; không phải test độc lập hoặc ước lượng tổng quát ngoài đồng.",
+  "split": "test",
+  "manifest_sha256": "43f4b83484c4977b0206a59635d89540070fa242b78bef6a32e79ee9d0052724",
+  "dataset_revision": "7f7ecc7e1eaca78107e3affe7cb5abd9427e139a",
+  "checkpoint_sha256": "b20634ad7be7da28e6a2345b7def1c217a877ce89e10d581d9b30ab5d152a963",
+  "model_version": "resnet18-b20634ad7be7",
+  "labels": [
+    "Potato___Early_blight",
+    "Potato___Late_blight",
+    "Potato___healthy",
+    "Tomato___Early_blight",
+    "Tomato___Late_blight",
+    "Tomato___healthy"
+  ],
+  "confusion_matrix": [
+    [
+      151,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      147,
+      0,
+      1,
+      4,
+      0
+    ],
+    [
+      0,
+      5,
+      23,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      0,
+      135,
+      11,
+      3
+    ],
+    [
+      0,
+      9,
+      0,
+      16,
+      115,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      3,
+      4,
+      145
+    ]
+  ],
+  "metrics": {
+    "accuracy": 0.9226804123711341,
+    "macro_precision": 0.932945837043634,
+    "macro_recall": 0.9075814536340853,
+    "macro_f1": 0.9185032674159465,
+    "weighted_f1": 0.9223696519687,
+    "sample_count": 776,
+    "per_class": [
+      {
+        "label": "Potato___Early_blight",
+        "precision": 0.9869281045751634,
+        "recall": 0.993421052631579,
+        "f1": 0.9901639344262295,
+        "support": 152,
+        "predicted": 153
+      },
+      {
+        "label": "Potato___Late_blight",
+        "precision": 0.901840490797546,
+        "recall": 0.9671052631578947,
+        "f1": 0.9333333333333332,
+        "support": 152,
+        "predicted": 163
+      },
+      {
+        "label": "Potato___healthy",
+        "precision": 1.0,
+        "recall": 0.8214285714285714,
+        "f1": 0.9019607843137255,
+        "support": 28,
+        "predicted": 23
+      },
+      {
+        "label": "Tomato___Early_blight",
+        "precision": 0.8709677419354839,
+        "recall": 0.8881578947368421,
+        "f1": 0.8794788273615635,
+        "support": 152,
+        "predicted": 155
+      },
+      {
+        "label": "Tomato___Late_blight",
+        "precision": 0.8582089552238806,
+        "recall": 0.8214285714285714,
+        "f1": 0.8394160583941606,
+        "support": 140,
+        "predicted": 134
+      },
+      {
+        "label": "Tomato___healthy",
+        "precision": 0.9797297297297297,
+        "recall": 0.9539473684210527,
+        "f1": 0.9666666666666666,
+        "support": 152,
+        "predicted": 148
+      }
+    ],
+    "zero_division": 0,
+    "macro_class_count": 6
+  },
+  "groups": 194,
+  "bootstrap": {
+    "unit": "group_id",
+    "replicates": 1000,
+    "seed": 42,
+    "method": "Percentile group bootstrap, fixed six classes, zero_division=0; conditional on this dataset, not evidence of independent generalization.",
+    "accuracy_95_interval": [
+      0.8981958762886598,
+      0.9445876288659794
+    ],
+    "macro_f1_95_interval": [
+      0.8904293534915034,
+      0.9424591755069791
+    ]
+  },
+  "timing": {
+    "warm_up_predictions": 3,
+    "device": "cpu",
+    "torch_threads": 8,
+    "median_decode_predict_ms": 33.5907499975292,
+    "p95_decode_predict_ms": 42.697800003224984,
+    "median_predict_ms": 32.702449992939364,
+    "total_loop_seconds": 28.809678400008124,
+    "protocol": "Sequential single-image CPU production API; decode_predict includes validation/decode/preprocess/forward/softmax, excludes file I/O/checksum. No tuning."
+  },
+  "environment": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+    "versions": {
+      "torch": "2.8.0+cpu",
+      "torchvision": "0.23.0+cpu",
+      "pillow": "13.0.0",
+      "numpy": "2.4.6",
+      "matplotlib": "3.10.8"
+    }
+  },
+  "code_base_commit": "fbf9602c503101c02a4e8b38a9307bcd7386c713",
+  "source_sha256": {
+    "scripts/evaluate.py": "8379571469a027a913df1b3bff6a0df4c0ae474b2c0f92b3e00c2a39e4bcd79f",
+    "src/metrics.py": "f17ed259f184065c736c8447154d15e8254b525e942151b637baa48ed61e235a",
+    "src/inference.py": "254168d13e7c698b90b4f75cfad94da7dfcf300cbdd5c688bcb93b94feab84b1",
+    "src/preprocessing.py": "5c4ef2f31a9aa2f1cd7109d300bf196c69e97232e4f8e4553cc328df517cf0b9",
+    "src/labels.py": "8a4bd7d9474d32d7c8d17eaabf7472f4f3b401b99aab83f6dd8bbc96e5fdb553",
+    "src/validation.py": "2f04f58c4a59328e709a3ad9a7445487bfb5f9033c1ae7c199d9d77b27565ef7"
+  },
+  "limitations": [
+    "Original checkpoint training membership is unknown; overlap cannot be ruled out.",
+    "Only mapped, non-quarantined test rows are included; 1582 unresolved images excluded in Phase 3.",
+    "Physical independence depends on upstream leaf metadata; near duplicates not exhaustively excluded.",
+    "Potato healthy test contains only 7 leaf groups (28 images).",
+    "No threshold/model tuning or retraining performed."
+  ],
+  "predictions_sha256": "16beccfca5f80feda1424f781617bf03eea1306cdc55382979562237a032ebc4",
+  "figures_sha256": {
+    "confusion_matrix.png": "b6ce8414cff4e59e141464c9421e7ed000da8f013851e1f7041d8b7b32f8f349",
+    "latency.png": "ef94775cd9c98815bab460baf511c6e9f80a3b924935b5622990c4863009535f",
+    "examples.png": "909f5bf156468551a0956fd7044aa735373dc0f0cc5df4e882f9310575fac6cc"
+  }
+}

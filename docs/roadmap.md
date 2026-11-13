@@ -1,6 +1,6 @@
 # Kế hoạch triển khai
 
-Ngày bắt đầu: 12/11/2026. Ước lượng 12 ngày làm việc và 2 ngày dự phòng; không phải deadline học phần. Đã triển khai Phase 0–5; ngày trong bảng là kế hoạch ước lượng ban đầu.
+Ngày bắt đầu: 12/11/2026. Ước lượng 12 ngày làm việc và 2 ngày dự phòng; không phải deadline học phần. Đã triển khai Phase 0–6; ngày trong bảng là kế hoạch ước lượng ban đầu.
 
 | Phase | Công việc và đầu ra | Gate trước khi chuyển tiếp | Ước lượng |
 |---|---|---|---|
@@ -24,4 +24,4 @@ Phase 2 và 3 là cơ sở cho Phase 4–6. Nếu giảng viên yêu cầu tự 
 - M2 — Hoàn thiện ứng dụng: Phase 4–5.
 - M3 — Đánh giá và bàn giao: Phase 6–8.
 
-Issue là nguồn theo dõi trạng thái thực thi. Phase 0–1 hoàn thành qua PR #11; Phase 2 qua PR #12; Phase 3 qua PR #13; Phase 4 qua PR #14. Phase 5 có UI tiếng Việt, lịch sử SQLite/CSV, 32 test và QA trình duyệt; xem `docs/ui-ux.md`, tích hợp theo issue #6 và #7. Trang đánh giá có audit/baseline, metrics mô hình đầy đủ vẫn thuộc Phase 6 (#8). Yêu cầu riêng học phần chờ xác nhận tại #2. Phase 6–8 chưa thực hiện.
+Issue là nguồn theo dõi trạng thái thực thi. Phase 0–1 hoàn thành qua PR #11; Phase 2 qua PR #12; Phase 3 qua PR #13; Phase 4 qua PR #14; Phase 5 qua PR #15. Phase 6 có kiểm chứng checkpoint trên 776 ảnh, metrics/biểu đồ, 39 test và CI; xem `docs/evaluation.md`, tích hợp theo issue #8. Không nhận kết quả này là test độc lập; chưa huấn luyện lại. Yêu cầu riêng học phần chờ xác nhận tại #2. Phase 7–8 chưa thực hiện.

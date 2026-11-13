@@ -1,0 +1,269 @@
+{
+  "selection": "One lowest-confidence correct image per class, followed by up to six highest-confidence errors; no retuning.",
+  "examples": [
+    {
+      "source_path": "raw/color/Potato___Early_blight/00d8f10f-5038-4e0f-bb58-0b885ddc0cc5___RS_Early.B 8722.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Potato___Early_blight/00d8f10f-5038-4e0f-bb58-0b885ddc0cc5___RS_Early.B 8722.JPG",
+      "group_id": "467389abd96fcfad20ae3f99",
+      "image_sha256": "c4949cee5155170fc987d2080323c25b9ef7190770e7df2b4ae7d0c450e7fdb8",
+      "expected_index": 0,
+      "predicted_index": 0,
+      "expected": "Potato___Early_blight",
+      "predicted": "Potato___Early_blight",
+      "correct": true,
+      "confidence": 0.5747636556625366,
+      "probabilities": [
+        0.5747636556625366,
+        0.02525405026972294,
+        0.001334782806225121,
+        0.3913993239402771,
+        0.0039759669452905655,
+        0.0032721711322665215
+      ],
+      "predict_ms": 35.25939999963157,
+      "decode_predict_ms": 36.17140000278596
+    },
+    {
+      "source_path": "raw/color/Potato___Late_blight/ae966e38-73b3-47c1-9421-20ac2f570f46___RS_LB 3240.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Potato___Late_blight/ae966e38-73b3-47c1-9421-20ac2f570f46___RS_LB 3240.JPG",
+      "group_id": "c8d3cbeb919cdc6fd3941a23",
+      "image_sha256": "6d959631f00c1bee37887e4088b43dfac9c51985e7ac57691486bf087eab340c",
+      "expected_index": 1,
+      "predicted_index": 1,
+      "expected": "Potato___Late_blight",
+      "predicted": "Potato___Late_blight",
+      "correct": true,
+      "confidence": 0.42821571230888367,
+      "probabilities": [
+        0.000683648104313761,
+        0.42821571230888367,
+        0.0033530290238559246,
+        0.11189830303192139,
+        0.42608320713043213,
+        0.02976607158780098
+      ],
+      "predict_ms": 29.77370000735391,
+      "decode_predict_ms": 30.668799998238683
+    },
+    {
+      "source_path": "raw/color/Potato___healthy/f4be3632-42a1-415a-9f7e-1d5ecb9f49d7___RS_HL 1783.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Potato___healthy/f4be3632-42a1-415a-9f7e-1d5ecb9f49d7___RS_HL 1783.JPG",
+      "group_id": "60e20869a0e9ac4d48045473",
+      "image_sha256": "4d34ce5b8506af0777ddba2bfc189ba0c18e28d26f1b5140ceec72538f991b61",
+      "expected_index": 2,
+      "predicted_index": 2,
+      "expected": "Potato___healthy",
+      "predicted": "Potato___healthy",
+      "correct": true,
+      "confidence": 0.4794924259185791,
+      "probabilities": [
+        0.0013237643288448453,
+        0.3139963150024414,
+        0.4794924259185791,
+        0.002182737225666642,
+        0.1973852664232254,
+        0.005619547329843044
+      ],
+      "predict_ms": 38.41100000136066,
+      "decode_predict_ms": 39.335199995548464
+    },
+    {
+      "source_path": "raw/color/Tomato___Early_blight/a8d93308-45b8-46e0-b708-02c325d6b027___RS_Erly.B 9535.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Tomato___Early_blight/a8d93308-45b8-46e0-b708-02c325d6b027___RS_Erly.B 9535.JPG",
+      "group_id": "cfab43a4c692eeca99af96ff",
+      "image_sha256": "b707d8c2f6873063d80b17e9510da42d894ad24777f506fe1006e8baadbb50d5",
+      "expected_index": 3,
+      "predicted_index": 3,
+      "expected": "Tomato___Early_blight",
+      "predicted": "Tomato___Early_blight",
+      "correct": true,
+      "confidence": 0.3916796147823334,
+      "probabilities": [
+        0.20148849487304688,
+        0.3104601800441742,
+        8.143568265950307e-05,
+        0.3916796147823334,
+        0.09544438123703003,
+        0.0008458685479126871
+      ],
+      "predict_ms": 29.88079999340698,
+      "decode_predict_ms": 30.426700002863072
+    },
+    {
+      "source_path": "raw/color/Tomato___Late_blight/3152f2ab-94e6-4e06-8fb9-568c45d31b0b___RS_Late.B 6175.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Tomato___Late_blight/3152f2ab-94e6-4e06-8fb9-568c45d31b0b___RS_Late.B 6175.JPG",
+      "group_id": "086ba2fcdbafbbd0b8cb57f5",
+      "image_sha256": "c317bc8aaddc64cfde67e04966624bd565247d1e94f35cde81b2f68471dae85f",
+      "expected_index": 4,
+      "predicted_index": 4,
+      "expected": "Tomato___Late_blight",
+      "predicted": "Tomato___Late_blight",
+      "correct": true,
+      "confidence": 0.35537341237068176,
+      "probabilities": [
+        0.23295406997203827,
+        0.1420750766992569,
+        0.0012068799696862698,
+        0.1826651245355606,
+        0.35537341237068176,
+        0.08572544902563095
+      ],
+      "predict_ms": 34.53509999962989,
+      "decode_predict_ms": 35.460600003716536
+    },
+    {
+      "source_path": "raw/color/Tomato___healthy/de56bf63-8f55-426a-a2a1-8a8a635ad5a0___RS_HL 9747.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Tomato___healthy/de56bf63-8f55-426a-a2a1-8a8a635ad5a0___RS_HL 9747.JPG",
+      "group_id": "18a14c7f6ce0acb4031a6d28",
+      "image_sha256": "93208a69a620700d2493652f37a107d276d47f6eeecb2aa608dc99559c1fe736",
+      "expected_index": 5,
+      "predicted_index": 5,
+      "expected": "Tomato___healthy",
+      "predicted": "Tomato___healthy",
+      "correct": true,
+      "confidence": 0.5068897008895874,
+      "probabilities": [
+        0.008322242647409439,
+        0.0013675426598638296,
+        0.00010900453344220296,
+        0.3118365705013275,
+        0.17147494852542877,
+        0.5068897008895874
+      ],
+      "predict_ms": 36.479500005953014,
+      "decode_predict_ms": 37.406000003102235
+    },
+    {
+      "source_path": "raw/color/Potato___Late_blight/bd632f59-ff1c-452f-b504-053fa95ab000___RS_LB 4356.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Potato___Late_blight/bd632f59-ff1c-452f-b504-053fa95ab000___RS_LB 4356.JPG",
+      "group_id": "e5136e553f053fa89c72d0e7",
+      "image_sha256": "82f33383601fbbecce39ac4e2ea316da4d1fa8fe69ccef1164f65180ad729ba9",
+      "expected_index": 1,
+      "predicted_index": 4,
+      "expected": "Potato___Late_blight",
+      "predicted": "Tomato___Late_blight",
+      "correct": false,
+      "confidence": 0.9707645773887634,
+      "probabilities": [
+        4.3662574171321467e-05,
+        0.008087420836091042,
+        3.660654556369991e-06,
+        0.021087955683469772,
+        0.9707645773887634,
+        1.2725063243124168e-05
+      ],
+      "predict_ms": 30.85950000968296,
+      "decode_predict_ms": 31.968900002539158
+    },
+    {
+      "source_path": "raw/color/Tomato___Late_blight/455a88bf-102d-4eeb-bea9-f0e648a3ad31___RS_Late.B 6903.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Tomato___Late_blight/455a88bf-102d-4eeb-bea9-f0e648a3ad31___RS_Late.B 6903.JPG",
+      "group_id": "a15855d1a81a3b30173332fc",
+      "image_sha256": "e5ccdacc3e6306ed640caca53ace314113b32b53a9b07635976de27dee2ade61",
+      "expected_index": 4,
+      "predicted_index": 1,
+      "expected": "Tomato___Late_blight",
+      "predicted": "Potato___Late_blight",
+      "correct": false,
+      "confidence": 0.9575167298316956,
+      "probabilities": [
+        0.006347415968775749,
+        0.9575167298316956,
+        4.8651731049176306e-05,
+        0.009691215120255947,
+        0.026391707360744476,
+        4.334610821388196e-06
+      ],
+      "predict_ms": 30.67160000500735,
+      "decode_predict_ms": 31.63670000503771
+    },
+    {
+      "source_path": "raw/color/Tomato___Early_blight/c21e480d-8263-4b9c-b429-4beceb2cb7d0___RS_Erly.B 8292.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Tomato___Early_blight/c21e480d-8263-4b9c-b429-4beceb2cb7d0___RS_Erly.B 8292.JPG",
+      "group_id": "0abe9d613cc1572fdcc30e73",
+      "image_sha256": "81137212adf558d2280e1d5e6c6e4e21ea0955beb907839f6d6c6ac7c7288fec",
+      "expected_index": 3,
+      "predicted_index": 0,
+      "expected": "Tomato___Early_blight",
+      "predicted": "Potato___Early_blight",
+      "correct": false,
+      "confidence": 0.9573476910591125,
+      "probabilities": [
+        0.9573476910591125,
+        0.0038987582083791494,
+        0.00039300916250795126,
+        0.03452683240175247,
+        0.0033640179317444563,
+        0.0004696522664744407
+      ],
+      "predict_ms": 37.16750000603497,
+      "decode_predict_ms": 38.05659999488853
+    },
+    {
+      "source_path": "raw/color/Tomato___Late_blight/d63c86b6-4cd6-4982-b12c-c770ce2a2ef3___RS_Late.B 6574.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Tomato___Late_blight/d63c86b6-4cd6-4982-b12c-c770ce2a2ef3___RS_Late.B 6574.JPG",
+      "group_id": "da48242ab894b79d2aee5a5b",
+      "image_sha256": "796ffbb2c7172f072e2633655d6f1df24b3c102c628f2aee7357b9321e89aa1b",
+      "expected_index": 4,
+      "predicted_index": 3,
+      "expected": "Tomato___Late_blight",
+      "predicted": "Tomato___Early_blight",
+      "correct": false,
+      "confidence": 0.9185082316398621,
+      "probabilities": [
+        0.007031571120023727,
+        0.0011230537202209234,
+        5.498721748153912e-06,
+        0.9185082316398621,
+        0.07049527764320374,
+        0.00283630914054811
+      ],
+      "predict_ms": 36.66489999159239,
+      "decode_predict_ms": 37.612699990859255
+    },
+    {
+      "source_path": "raw/color/Tomato___Early_blight/7bd63940-1890-4263-8c8c-e0c743bb51ce___RS_Erly.B 9487.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Tomato___Early_blight/7bd63940-1890-4263-8c8c-e0c743bb51ce___RS_Erly.B 9487.JPG",
+      "group_id": "02810b5cab0dd2ef82f28dea",
+      "image_sha256": "5b61a14d9aec482c522a63a08a0f407ba3ee83458a0c7af8846adf45e082cd4a",
+      "expected_index": 3,
+      "predicted_index": 0,
+      "expected": "Tomato___Early_blight",
+      "predicted": "Potato___Early_blight",
+      "correct": false,
+      "confidence": 0.8914856314659119,
+      "probabilities": [
+        0.8914856314659119,
+        0.012484254315495491,
+        0.0011766975512728095,
+        0.08594957739114761,
+        0.008228300139307976,
+        0.0006755955400876701
+      ],
+      "predict_ms": 30.36160000192467,
+      "decode_predict_ms": 31.19009999500122
+    },
+    {
+      "source_path": "raw/color/Tomato___Late_blight/16984239-2e67-407e-b600-4a3666500534___RS_Late.B 5182.JPG",
+      "local_path": "data/plantvillage-source/raw/color/Tomato___Late_blight/16984239-2e67-407e-b600-4a3666500534___RS_Late.B 5182.JPG",
+      "group_id": "64012f032de01bc34cc9fc04",
+      "image_sha256": "b91771f72103746dd3854aa42b5cd696331f88808b88dbe61d4b99d2fd7c3281",
+      "expected_index": 4,
+      "predicted_index": 3,
+      "expected": "Tomato___Late_blight",
+      "predicted": "Tomato___Early_blight",
+      "correct": false,
+      "confidence": 0.8907557129859924,
+      "probabilities": [
+        0.0003598520124796778,
+        0.002216483000665903,
+        2.2877957235323265e-05,
+        0.8907557129859924,
+        0.10460443049669266,
+        0.00204069702886045
+      ],
+      "predict_ms": 35.26140000030864,
+      "decode_predict_ms": 36.12379998958204
+    }
+  ]
+}
