@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "prepared_on": "2026-11-22",
+  "timezone": "Asia/Bangkok",
+  "scope": "phase7_report_slides_and_demo_no_training",
+  "evaluation_source": {
+    "path": "reports/evaluation/latest.json",
+    "sha256": "87c8806c5d7a1612f679141c26afe21bf2cdef9d0ab05a9275a61222c2da638d",
+    "created_at": "2026-11-13T22:30:26.671186+07:00"
+  },
+  "dataset_source": {
+    "path": "reports/dataset/summary.json",
+    "sha256": "646c1a5458a11a519e7dfe2aa19b48ceb517ba26e3ac9b77f6bc27105ff3f080"
+  },
+  "checkpoint_sha256": "b20634ad7be7da28e6a2345b7def1c217a877ce89e10d581d9b30ab5d152a963",
+  "manifest_sha256": "43f4b83484c4977b0206a59635d89540070fa242b78bef6a32e79ee9d0052724",
+  "independent_test": false,
+  "report_pages": 12,
+  "slides": 12,
+  "spaces_page_id": "page_c9ec92984c788191901495603ba250f3",
+  "video": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "12/1"
+      }
+    ],
+    "format": {
+      "duration": "239.916667"
+    }
+  },
+  "files": [
+    {
+      "path": "deliverables/phase7/bao-cao-agri-leaf.docx",
+      "bytes": 233280,
+      "sha256": "fdafedf1857ae7a77742902877344a2d0af018a7f49da7464a9068a60c091680"
+    },
+    {
+      "path": "deliverables/phase7/bao-cao-agri-leaf.pdf",
+      "bytes": 568604,
+      "sha256": "d4eda72be1301ba2a3d0e879353d163ff603606946041e51bf534077228b2a8b"
+    },
+    {
+      "path": "deliverables/phase7/demo-agri-leaf.mp4",
+      "bytes": 2664050,
+      "sha256": "0e0b606537744b07f292dd95c85e2d17b6183774a92111222395fea856ddbdb8"
+    },
+    {
+      "path": "deliverables/phase7/demo-agri-leaf.srt",
+      "bytes": 5550,
+      "sha256": "cfae53be080ade400c1366cb46e34765a903a6726d8dfd5e8c3bd5919add2ae3"
+    },
+    {
+      "path": "deliverables/phase7/slide-agri-leaf.pptx",
+      "bytes": 130337,
+      "sha256": "900aa60e71bd7c605b6150d6ddf185a0527a21f196a7656af10d2aef34524ac2"
+    }
+  ],
+  "review": {
+    "report": "Canonical render_docx.py with LibreOffice 26.8.3 and Poppler; all 12 pages visually inspected; title border removed and re-rendered.",
+    "slides": "Spaces saved 12 editable slides. Native render crashed twice on Windows; fallback exported same slide state, hydrated screenshot from source bytes, validated package/layout/import and visually reviewed all 12 LibreOffice slide renders. No native PowerPoint execution test.",
+    "video": "Captioned still-image walkthrough, 12 scenes / 48 subtitles, four minutes; no audio or simulated cursor. UI captures from real browser session; not continuous screen recording or latency measurement.",
+    "ui": "Sample Potato EB -> predict 85.58% -> explicit save -> history -> CSV download -> evaluation -> guide. Separate ignored demo SQLite; downloaded CSV label/confidence/model checksum matched.",
+    "tests": "39 existing offline tests passed; scripts/check_evaluation.py passed. No model or data pipeline changes."
+  },
+  "limitations": [
+    "Report identity fields intentionally blank; school rubric/template and self-training requirements remain unconfirmed in issue #2.",
+    "Inherited checkpoint training membership unknown; evaluation may overlap original training.",
+    "Spaces page remains personal; GitHub readers use committed fallback PPTX.",
+    "Phase 8 clean clone and release v1.0.0 not yet performed."
+  ]
+}

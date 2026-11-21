@@ -1,0 +1,191 @@
+1
+00:00:00,000 --> 00:00:05,000
+Agri Leaf là ứng dụng học phần nhận dạng mẫu trong nông nghiệp.
+
+2
+00:00:05,000 --> 00:00:10,000
+Hệ thống phân loại một ảnh lá khoai tây hoặc cà chua vào sáu nhãn.
+
+3
+00:00:10,000 --> 00:00:15,000
+Mô hình ResNet18 và trọng số được kế thừa từ smart-leaf-ai.
+
+4
+00:00:15,000 --> 00:00:20,000
+Video minh họa từ ảnh chụp ứng dụng thật; có phụ đề, không có thuyết minh âm thanh.
+
+5
+00:00:20,000 --> 00:00:25,000
+Trang Nhận dạng cho phép tải ảnh máy hoặc chọn ảnh mẫu.
+
+6
+00:00:25,000 --> 00:00:30,000
+Chỉ nhận nội dung JPEG và PNG trong giới hạn đã công bố.
+
+7
+00:00:30,000 --> 00:00:35,000
+Sáu ảnh mẫu được chọn từ train, có nguồn và checksum cố định.
+
+8
+00:00:35,000 --> 00:00:40,000
+Ảnh mẫu phục vụ demo thao tác, không đại diện cho accuracy test.
+
+9
+00:00:40,000 --> 00:00:45,000
+Sau khi dùng ảnh mẫu, ứng dụng hiển thị ảnh xem trước.
+
+10
+00:00:45,000 --> 00:00:50,000
+Ảnh được xác minh định dạng rồi chuyển về RGB.
+
+11
+00:00:50,000 --> 00:00:55,000
+Pipeline resize 224 × 224 và ToTensor, không thêm Normalize.
+
+12
+00:00:55,000 --> 00:01:00,000
+Người dùng bấm Phân tích ảnh để chạy mô hình trên CPU.
+
+13
+00:01:00,000 --> 00:01:05,000
+Ảnh minh họa được dự đoán Khoai tây Early blight với điểm 85,58%.
+
+14
+00:01:05,000 --> 00:01:10,000
+Top 3 giúp quan sát các lựa chọn mô hình còn cân nhắc.
+
+15
+00:01:10,000 --> 00:01:15,000
+Điểm softmax chưa được hiệu chuẩn thành xác suất kết luận đúng.
+
+16
+00:01:15,000 --> 00:01:20,000
+Mô hình luôn chọn một trong sáu lớp ngay cả khi gặp ảnh ngoài phạm vi.
+
+17
+00:01:20,000 --> 00:01:25,000
+Xem kết quả không tự ghi ảnh gốc vào lịch sử.
+
+18
+00:01:25,000 --> 00:01:30,000
+Chỉ khi bấm Lưu kết quả, bản ghi mới xuất hiện tại trang Lịch sử.
+
+19
+00:01:30,000 --> 00:01:35,000
+Mỗi bản ghi chứa nhãn, điểm, thời gian và phiên bản checkpoint.
+
+20
+00:01:35,000 --> 00:01:40,000
+Ảnh lưu là thumbnail JPEG tối đa 320 × 240, không phải ảnh upload gốc.
+
+21
+00:01:40,000 --> 00:01:45,000
+Trang Lịch sử cung cấp bộ lọc cây và nhóm kết quả.
+
+22
+00:01:45,000 --> 00:01:50,000
+Có thể tìm theo tên ảnh Unicode hoặc bật giới hạn khoảng ngày.
+
+23
+00:01:50,000 --> 00:01:55,000
+Danh sách phân trang mười bản ghi để tránh hiển thị quá dài.
+
+24
+00:01:55,000 --> 00:02:00,000
+Thao tác xóa cần xác nhận; dữ liệu dùng chung trên máy chạy ứng dụng.
+
+25
+00:02:00,000 --> 00:02:05,000
+Nút Xuất CSV theo bộ lọc tải các bản ghi phù hợp.
+
+26
+00:02:05,000 --> 00:02:10,000
+CSV dùng UTF-8 BOM để giữ đúng dấu tiếng Việt.
+
+27
+00:02:10,000 --> 00:02:15,000
+Điểm trong file có miền 0–1; giao diện hiển thị phần trăm.
+
+28
+00:02:15,000 --> 00:02:20,000
+Phiên demo đã tải CSV với nhãn, điểm 0,855765 và model_version tương ứng.
+
+29
+00:02:20,000 --> 00:02:25,000
+Trang Đánh giá hiển thị artifact đã chạy, không tạo số liệu minh họa.
+
+30
+00:02:25,000 --> 00:02:30,000
+Có 716 dự đoán khớp nhãn trong tổng 776 ảnh, thuộc 194 nhóm lá.
+
+31
+00:02:30,000 --> 00:02:35,000
+Accuracy đạt 92,27% và macro F1 đạt 91,85% trên tập đo.
+
+32
+00:02:35,000 --> 00:02:40,000
+Checkpoint có thể từng học các ảnh này; đây chưa phải test độc lập.
+
+33
+00:02:40,000 --> 00:02:45,000
+Ma trận nhầm lẫn dùng hàng là nhãn thật và cột là dự đoán.
+
+34
+00:02:45,000 --> 00:02:50,000
+Có 16 ảnh Tomato Late blight bị xếp sang Tomato Early blight.
+
+35
+00:02:50,000 --> 00:02:55,000
+Chiều ngược lại có 11 ảnh; đây là cặp lỗi đáng chú ý.
+
+36
+00:02:55,000 --> 00:03:00,000
+Median decode, preprocess và predict là 33,59 ms; không tính đọc file hoặc checksum.
+
+37
+00:03:00,000 --> 00:03:05,000
+Nguồn ảnh là PlantVillage public, được ghim theo snapshot GitHub.
+
+38
+00:03:05,000 --> 00:03:10,000
+Audit 6.652 ảnh ghi nhận không có lỗi giải mã và có 14 cặp trùng.
+
+39
+00:03:10,000 --> 00:03:15,000
+1.582 ảnh thiếu mapping nhóm lá được giữ riêng khỏi split.
+
+40
+00:03:15,000 --> 00:03:20,000
+5.070 ảnh đủ điều kiện được chia train, validation và test theo nhóm lá.
+
+41
+00:03:20,000 --> 00:03:25,000
+Trang Hướng dẫn giải thích ảnh phù hợp và cách đọc điểm.
+
+42
+00:03:25,000 --> 00:03:30,000
+Ảnh ngoài đồng, nhiều lá hoặc cây khác có thể khác dữ liệu đã học.
+
+43
+00:03:30,000 --> 00:03:35,000
+Ứng dụng phục vụ học tập; kết quả chưa thay thế kiểm chứng chuyên môn.
+
+44
+00:03:35,000 --> 00:03:40,000
+Code kế thừa theo MIT; ảnh giữ nguồn PlantVillage và điều kiện dữ liệu theo card.
+
+45
+00:03:40,000 --> 00:03:45,000
+Đóng góp gồm UI tiếng Việt, tách module, lịch sử SQLite và xuất CSV.
+
+46
+00:03:45,000 --> 00:03:50,000
+Dự án bổ sung audit dữ liệu, manifest, đánh giá truy vết và 39 test với CI.
+
+47
+00:03:50,000 --> 00:03:55,000
+Chưa tự huấn luyện hay so sánh mô hình; bước tiếp theo cần dữ liệu độc lập.
+
+48
+00:03:55,000 --> 00:04:00,000
+Mã nguồn, báo cáo, slide và hướng dẫn bảo vệ nằm trong GitHub namphwong/agri-leaf-disease-recognition.

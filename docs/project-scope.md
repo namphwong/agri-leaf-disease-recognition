@@ -5,7 +5,7 @@
 - Học phần: Nhận dạng mẫu.
 - Tên đề tài: Xây dựng ứng dụng nhận dạng bệnh trên lá khoai tây và cà chua sử dụng ResNet18.
 - Repository: https://github.com/namphwong/agri-leaf-disease-recognition
-- Trạng thái: Phase 0–5 hoàn thành; Phase 6 có kiểm chứng 776 ảnh, metrics/biểu đồ và CI. Đây không phải test độc lập của checkpoint kế thừa. Yêu cầu riêng giảng viên chờ xác nhận.
+- Trạng thái: Phase 0–7 có đầy đủ ứng dụng, kiểm chứng 776 ảnh, CI và bộ báo cáo/slide/video tại `docs/phase7/README.md`. Đây không phải test độc lập của checkpoint kế thừa. Yêu cầu riêng giảng viên chờ xác nhận; Phase 8 phát hành chưa thực hiện.
 
 ## 1. Mục tiêu và người dùng
 
