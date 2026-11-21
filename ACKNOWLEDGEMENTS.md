@@ -34,4 +34,6 @@ Các thành phần kế thừa: `app.py`, checkpoint `models/leaf_model_final.pt
 
 Đã thực hiện ở Phase 6: đánh giá mô tả 776 ảnh, metrics có thể dựng lại từ dự đoán, biểu đồ matplotlib, phân tích lỗi, kiểm tra artifacts và CI GitHub Actions. `reports/evaluation/examples.png` chứa 12 ảnh test PlantVillage theo `examples.json`, ghi nguồn và CC BY-SA 3.0 của ảnh theo dataset card; không coi các ảnh này là dữ liệu chưa từng được checkpoint gốc học. Chưa huấn luyện mô hình mới.
 
-Dự kiến ở các phase sau: báo cáo, slide/video và phát hành. Huấn luyện/so sánh thuật toán bổ sung phụ thuộc yêu cầu học phần chưa xác nhận. Các mục dự kiến chưa được tính là đã triển khai.
+Đã thực hiện ở Phase 7: báo cáo Word/PDF 12 trang, 12 slide editable có notes/nguồn, kịch bản bảo vệ, video minh họa phụ đề 4 phút từ ảnh chụp ứng dụng thật và biên bản hash bàn giao. Báo cáo/slide/video giữ nguyên giới hạn đánh giá, ghi rõ phần kế thừa và có hỗ trợ Codex. Phần ảnh PlantVillage và chuyển thể trong screenshot/tài liệu/video giữ nguồn và điều kiện CC BY-SA 3.0 theo dataset card; xem `docs/phase7/README.md`.
+
+Phase 8 phát hành và huấn luyện/so sánh bổ sung chưa thực hiện. Yêu cầu học phần riêng chưa xác nhận; các mục dự kiến không được tính là đã triển khai.

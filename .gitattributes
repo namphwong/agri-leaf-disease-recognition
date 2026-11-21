@@ -8,3 +8,10 @@ src/**/*.py text eol=lf
 scripts/evaluate.py text eol=lf
 reports/evaluation/*.json text eol=lf
 reports/evaluation/*.csv text eol=lf
+# Phase 7 delivery fingerprints must survive Windows and Unix checkout.
+reports/delivery/*.json text eol=lf
+deliverables/phase7/*.srt text eol=lf
+deliverables/phase7/*.docx binary
+deliverables/phase7/*.pdf binary
+deliverables/phase7/*.pptx binary
+deliverables/phase7/*.mp4 binary

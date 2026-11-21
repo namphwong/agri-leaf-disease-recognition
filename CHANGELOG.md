@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Added — Phase 7, 2026-11-22
+
+- Báo cáo Word/PDF 12 trang theo thực nghiệm đã chạy; bảng kế thừa/đóng góp và tài liệu tham khảo.
+- 12 slide editable có speaker notes, bản Spaces và PowerPoint dự phòng kiểm tra trực quan bằng LibreOffice.
+- Video dự phòng 4 phút từ ảnh chụp ứng dụng thật, phụ đề Việt/SRT, không có âm thanh; kịch bản demo và 13 câu hỏi bảo vệ.
+- Nguồn build tài liệu/video, biên bản SHA-256 bàn giao và kiểm tra offline trong CI.
+- Các trường hành chính để trống, rubric riêng chưa xác nhận; Phase 8 chưa thực hiện. Không train lại hoặc đổi số liệu.
+
 ### Added — Phase 6, 2026-11-13
 
 - Kiểm chứng checkpoint kế thừa trên 776 ảnh/194 nhóm: accuracy 92,27%, macro F1 91,85%; không phải test độc lập.

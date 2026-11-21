@@ -70,3 +70,7 @@ storage/
 # Logs
 *.log
 logs/
+
+# Local document/video build tools and rendered QA intermediates
+.tools/
+.phase7-build/

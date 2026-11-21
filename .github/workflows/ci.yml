@@ -39,3 +39,5 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Verify published evaluation artifacts
         run: python scripts/check_evaluation.py
+      - name: Verify Phase 7 deliverables
+        run: python scripts/check_delivery.py

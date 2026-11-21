@@ -82,6 +82,7 @@ Khôi phục dữ liệu và chạy audit (cần Git, internet và môi trườn
 - [UI/UX, ảnh giao diện và nghiệm thu Phase 5](docs/ui-ux.md).
 - [SQLite, quyền riêng tư cục bộ và xuất CSV](docs/history.md).
 - [Kết quả thực nghiệm Phase 6, biểu đồ và CI](docs/evaluation.md).
+- [Bộ báo cáo Word/PDF, 12 slide, video 4 phút và kịch bản bảo vệ Phase 7](docs/phase7/README.md).
 - [Quy trình đóng góp](CONTRIBUTING.md).
 - [Changelog](CHANGELOG.md).
 - [GitHub Issues](https://github.com/namphwong/agri-leaf-disease-recognition/issues).
@@ -102,6 +103,9 @@ reports/baseline/          # Manifest và kết quả kiểm chứng
 reports/dataset/           # Metadata ảnh, thống kê, split và nhãn
 reports/evaluation/        # 776 dự đoán, metrics, confusion matrix và hình minh họa
 tests/                     # 39 test dữ liệu, pipeline, UI, SQLite và đánh giá
+deliverables/phase7/        # Word, PDF, PowerPoint, video phụ đề và SRT
+docs/phase7/                # Hướng dẫn nộp và kịch bản bảo vệ
+reports/delivery/          # Checksum và biên bản bộ bàn giao
 .github/                   # Mẫu PR
 requirements.txt           # Dependencies trực tiếp đã ghim
 requirements-lock.txt      # Toàn bộ runtime Windows/Python 3.11
